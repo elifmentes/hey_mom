@@ -1,0 +1,33 @@
+.category-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  margin-left: 37px;
+}
+
+
+.category-tasks {
+  list-style-type: none;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+}
+
+.category-tasks li {
+  border: 3px solid white;
+  border-radius: 32px;
+  height: 64px;
+  margin: 10px 0px;
+  text-align: center;
+  line-height: 58px;
+}
+
+.category-tasks li > a {
+  color: white;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+.category-tasks li:hover {
+  color: lightgrey;
+  text-decoration: none;
+}

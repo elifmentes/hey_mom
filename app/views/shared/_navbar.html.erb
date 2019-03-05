@@ -7,19 +7,15 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+          <i class="fa fa-bars dropdown-toggle navbar-icon" data-toggle="dropdown"></i>
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
               <li class="dropdown-title navbar-wagon-item navbar-wagon-link">HeyMom</li>
               <li><%= link_to "Search", "#", class: "navbar-wagon-item navbar-wagon-link active" %></li>
               <li><%= link_to "About", "#", class: "navbar-wagon-item navbar-wagon-link" %></li>
               <li><%= link_to "All", categories_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
-              <li><%= link_to "Food", "#", class: "navbar-wagon-item navbar-wagon-link" %></li>
-              <li><%= link_to "Health", "#", class: "navbar-wagon-item navbar-wagon-link" %></li>
-              <li><%= link_to "Housekeeping", "#", class: "navbar-wagon-item navbar-wagon-link" %></li>
-              <li><%= link_to "Productivity", "#", class: "navbar-wagon-item navbar-wagon-link" %></li>
-              <li><%= link_to "Relationships", "#", class: "navbar-wagon-item navbar-wagon-link" %></li>
-              <li><%= link_to "Wallet", "#", class: "navbar-wagon-item navbar-wagon-link" %></li>
-              <li><%= link_to "Profile", "#", class: "navbar-wagon-item navbar-wagon-link" %></li>
+              <% Category.all.each do |category| %>
+                <li><%= link_to category.name, category_path(category), class: "navbar-wagon-item navbar-wagon-link" %></li>
+              <% end %>
               <li><%= link_to "Settings", "#", class: "navbar-wagon-item navbar-wagon-link" %></li>
               <li>
                 <%= link_to destroy_user_session_path, method: :delete do %>
