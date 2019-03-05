@@ -4,19 +4,18 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :username, input_html: { class: 'input-fade' } %>
+    <%= f.input :username, input_html: { class: 'input-fade' }, autofocus: true %>
     <%= f.input :email,
                   required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email", class: 'input-fade' }%>
+                  input_html: { class: 'input-fade' }%>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password", class: 'input-fade' }%>
+                input_html: { class: 'input-fade' }%>
     <%= f.input :password_confirmation,
                 required: true,
-                input_html: { autocomplete: "new-password", class: 'input-fade' }%>
-    <%= f.input :gender, input_html: { class: 'input-fade' },collection: [["Male", true], ["Female", false]] %>
+                input_html: { class: 'input-fade' }%>
+    <%= f.input :gender, input_html: { class: 'input-fade' }, collection: [["Male", true], ["Female", false]] %>
     <%= f.input :location, input_html: { class: 'input-fade'} %>
   </div>
 
