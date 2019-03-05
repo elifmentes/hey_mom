@@ -30,13 +30,14 @@ def parse_article(url)
 end
 
 def build_tasks(category, method, title=nil)
-  task = Task.new(category: category, title: title)
+  task = Task.create(category: category, title: title)
   method["steps"].each { |step| build_steps(step, task) }
 end
 
 def build_steps(step, task)
   content = step["html"] == "" ? step["summary"] : step["html"]
-  step = Step.new(title: step["summary"], content: content, task: task)
+  step = Step.create(title: step["summary"], content: content, task: task)
+  p step
 end
 
 def url_multi(category, url)
@@ -51,6 +52,7 @@ def url_single(category, url)
   title = article["app"]["title"]
   method = article["app"]["sections"].find { |section| section["type"] == "steps" }["methods"][0]
   build_tasks(category, method, title)
+end
 
 housekeeping_articles = [
                           "Sort-Laundry",
@@ -211,7 +213,7 @@ health_articles = [
 
 wallet_urls.each { |url| url_multi(wallet, url) }
 food_urls.each { |url| url_multi(food, url) }
-health_articles.each { |article| url_single(health, "#{base_url}#{article}")}
-housekeeping_articles.each { |article| url_single(housekeeping, "#{base_url}#{article}")}
-productivity_articles.each { |article| url_single(productivity, "#{base_url}#{article}")}
-relationship_articles.each { |article| url_single(relationship, "#{base_url}#{article}")}
+health_articles.each { |article| url_single(health, "#{base_url}#{article}") }
+housekeeping_articles.each { |article| url_single(housekeeping, "#{base_url}#{article}") }
+productivity_articles.each { |article| url_single(productivity, "#{base_url}#{article}") }
+relationship_articles.each { |article| url_single(relationship, "#{base_url}#{article}") }
