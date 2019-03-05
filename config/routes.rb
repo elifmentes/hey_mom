@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :categories, only: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :categories, only: [:show] do
-    resources :tasks, only: [:index,:show] do
-      resources :steps, only: [:index, :show]
+    resources :tasks, only: [:show] do
+      resources :steps, only: [:show]
     end
   end
 end
