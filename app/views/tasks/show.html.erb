@@ -1,0 +1,6 @@
+<h1><%= @task.title %></h1>
+<ul>
+  <% @task.steps.reverse.each do |step| %>
+    <li><%= link_to step.title.remove(/<.*?>/), category_task_step_path(@category, @task, step) %></li>
+  <% end %>
+</ul>
