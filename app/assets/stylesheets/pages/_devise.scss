@@ -1,0 +1,22 @@
+.input-fade {
+  background-color: rgba(255,255,255,0.6);
+  &:focus {
+    background-color: rgba(255,255,255,0.9);
+  }
+}
+
+.alert {
+  background-color: $brand-danger;
+  border: none;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.text-muted {
+  display: none;
+}
+
+.invalid-feedback {
+  font-weight: bold;
+  color: $brand-danger;
+}
