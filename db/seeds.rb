@@ -1,3 +1,6 @@
+require "open-uri"
+require "JSON"
+
 UserTask.destroy_all
 User.destroy_all
 Step.destroy_all
@@ -11,169 +14,204 @@ admin = User.create(email: "adminadmin@adminadmin.com",
         location: "Lisbon"
         )
 
-finance = Category.create(name: "Wallet")
+wallet = Category.create(name: "Wallet")
 food = Category.create(name: "Food")
 health = Category.create(name: "Health")
 housekeeping = Category.create(name: "Housekeeping")
 productivity = Category.create(name: "Productivity")
 relationship = Category.create(name: "Relationship")
 
-# https://www.wikihow.com/api.php?format=json&action=categorylisting
-# https://www.wikihow.com/api.php?format=json&action=categorylisting&name=Laundry
-# https://www.wikihow.com/api.php?format=json&action=app&subcmd=search&q=hand%20wash%20clothes%20by
-# https://www.wikihow.com/api.php?format=json&action=app&subcmd=article&name=Sort Laundry by Colors
+base_url = "https://www.wikihow.com/api.php?format=json&action=app&subcmd=article&name="
+wallet_urls = ["https://www.wikihow.com/api.php?format=json&action=app&subcmd=article&name=Make-Money-as-a-College-Student", "https://www.wikihow.com/api.php?format=json&action=app&subcmd=article&name=Save-Money-As-a-Student"]
+food_urls = ["https://www.wikihow.com/api.php?format=json&action=app&subcmd=article&name=Make-Homemade-Food", "https://www.wikihow.com/api.php?format=json&action=app&subcmd=article&name=cook"]
 
-# HOUSEKEEPING TASKS APIS
-# "Sort Laundry": "//www.wikihow.com/Sort-Laundry",
-# "Reduce Laundry Wrinkles": "//www.wikihow.com/Reduce-Laundry-Wrinkles",
-# "Clean Up Spilled Laundry Detergent": "//www.wikihow.com/Clean-Up-Spilled-Laundry-Detergent",
-# "Sort Laundry by Colors": "//www.wikihow.com/Sort-Laundry-by-Colors",
-# "Do Your Laundry in a Dorm": "//www.wikihow.com/Do-Your-Laundry-in-a-Dorm",
-# "Wash Knitted Blankets": "//www.wikihow.com/Wash-Knitted-Blankets",
-# "Iron Silk": "//www.wikihow.com/Iron-Silk",
-# "Iron Without an Ironing Board": "//www.wikihow.com/Iron-Without-an-Ironing-Board",
-# "Remove Wrinkles from Clothes Without an Iron": "//www.wikihow.com/Remove-Wrinkles-from-Clothes-Without-an-Iron",
-# "Iron a Suit Jacket": "//www.wikihow.com/Iron-a-Suit-Jacket",
-# "Fold Clothes": "//www.wikihow.com/Fold-Clothes",
-# "Fold a Dress": "//www.wikihow.com/Fold-a-Dress",
-# "Fold Clothes Fast": "//www.wikihow.com/Fold-Clothes-Fast",
-# "Fold a Sweater": "//www.wikihow.com/Fold-a-Sweater",
-# "Clean Smoke Damage": "//www.wikihow.com/Clean-Smoke-Damage",
-# "Clean Light Switches": "//www.wikihow.com/Clean-Light-Switches",
-# "Clean Your House or Apartment Quickly and Effectively": "//www.wikihow.com/Clean-Your-House-or-Apartment-Quickly-and-Effectively",
-# "Clean a Living Room": "//www.wikihow.com/Clean-a-Living-Room",
-# "Keep Your House Clean": "//www.wikihow.com/Keep-Your-House-Clean",
-# "Clean Your House After a Wild Party": "//www.wikihow.com/Clean-Your-House-After-a-Wild-Party",
-# "Clean a Man Cave": "//www.wikihow.com/Clean-a-Man-Cave",
-# "Clean a Kitchen": "//www.wikihow.com/Clean-a-Kitchen",
-# "Clean a Bathroom Sink": "//www.wikihow.com/Clean-a-Bathroom-Sink",
-# "Unclog a Toilet with Dish Soap": "//www.wikihow.com/Unclog-a-Toilet-with-Dish-Soap",
-# "Clean Your Bathroom Fast": "//www.wikihow.com/Clean-Your-Bathroom-Fast",
-# "Clean Water Pipes": "//www.wikihow.com/Clean-Water-Pipes",
+def parse_article(url)
+  article = JSON.parse(open(url).read)
+end
 
-# RELATIONSHIP TASKS API
-# "Know when Someone Likes You": "//www.wikihow.com/Know-when-Someone-Likes-You",
-# "Cuddle": "//www.wikihow.com/Cuddle",
-# "Make a Guy Jealous": "//www.wikihow.com/Make-a-Guy-Jealous",
-# "Get Someone to Like You": "//www.wikihow.com/Get-Someone-to-Like-You",
-# "Not Fall in Love With Someone": "//www.wikihow.com/Not-Fall-in-Love-With-Someone",
-# "Care for Your Upset Boyfriend": "//www.wikihow.com/Care-for-Your-Upset-Boyfriend",
-# "Ask a Guy to Be Your Boyfriend": "//www.wikihow.com/Ask-a-Guy-to-Be-Your-Boyfriend",
-# "Get in a Relationship": "//www.wikihow.com/Get-in-a-Relationship",
-# "Avoid People You Don't Want to Talk To": "//www.wikihow.com/Avoid-People-You-Don%27t-Want-to-Talk-To",
-# "Find Out if a Person Actually Misses You": "//www.wikihow.com/Find-Out-if-a-Person-Actually-Misses-You",
-# "Get Your Girlfriend to Forgive You": "//www.wikihow.com/Get-Your-Girlfriend-to-Forgive-You",
-# "Make Someone Love You Again": "//www.wikihow.com/Make-Someone-Love-You-Again",
-# "Understand Platonic Love and Friendship": "//www.wikihow.com/Understand-Platonic-Love-and-Friendship",
-# "Build a Healthy Relationship": "//www.wikihow.com/Build-a-Healthy-Relationship",
-# "Understand What a Relationship Means": "//www.wikihow.com/Understand-What-a-Relationship-Means",
-# "Treat Girls With Respect": "//www.wikihow.com/Treat-Girls-With-Respect",
-# "React After Saying \"I Love You\"": "//www.wikihow.com/React-After-Saying-%22I-Love-You%22",
-# "Plan a Special Night Out": "//www.wikihow.com/Plan-a-Special-Night-Out",
-# "Love Someone The Way He Is": "//www.wikihow.com/Love-Someone-The-Way-He-Is",
-# "Get Your Girlfriend to Love You Again": "//www.wikihow.com/Get-Your-Girlfriend-to-Love-You-Again",
-# "Find Healing in Forgiveness": "//www.wikihow.com/Find-Healing-in-Forgiveness",
-# "Love Again": "//www.wikihow.com/Love-Again",
-# "End a Toxic Relationship": "//www.wikihow.com/End-a-Toxic-Relationship",
-# "Leave a Married Man": "//www.wikihow.com/Leave-a-Married-Man",
-# "Show a Girl You Like Her": "//www.wikihow.com/Show-a-Girl-You-Like-Her",
-# "Date Girls": "//www.wikihow.com/Date-Girls",
-# "Tell if a Boy Loves You": "//www.wikihow.com/Tell-if-a-Boy-Loves-You",
-# "Date": "//www.wikihow.com/Date",
-# "Be a Good Girlfriend": "//www.wikihow.com/Be-a-Good-Girlfriend",
-# "Know if You Are in the Friend Zone": "//www.wikihow.com/Know-if-You-Are-in-the-Friend-Zone",
-# "Tell Someone You Don't Want to Date Them Without Hurting Them": "//www.wikihow.com/Tell-Someone-You-Don%27t-Want-to-Date-Them-Without-Hurting-Them",
-# "Give Your Girlfriend an Unforgettable Birthday": "//www.wikihow.com/Give-Your-Girlfriend-an-Unforgettable-Birthday",
-# "Be Happy After Love Failure": "//www.wikihow.com/Be-Happy-After-Love-Failure",
-# "Learn Patience in a Relationship": "//www.wikihow.com/Learn-Patience-in-a-Relationship",
-# "Get over Someone Who You Know You Can't Date": "//www.wikihow.com/Get-over-Someone-Who-You-Know-You-Can%27t-Date",
-# "Decide if You Are Attracted to Someone": "//www.wikihow.com/Decide-if-You-Are-Attracted-to-Someone",
-# "Be a Protective Boyfriend": "//www.wikihow.com/Be-a-Protective-Boyfriend",
-# "Break up With Your Significant Other when You Are Already Dating Someone Else": "//www.wikihow.com/Break-up-With-Your-Significant-Other-when-You-Are-Already-Dating-Someone-Else",
-# "Stop Your Partner from Swearing": "//www.wikihow.com/Stop-Your-Partner-from-Swearing",
-# "Deal With a Jealous Girlfriend": "//www.wikihow.com/Deal-With-a-Jealous-Girlfriend",
-# "Win a Man's Heart": "//www.wikihow.com/Win-a-Man%27s-Heart",
-# "Recognize Warning Signs that Your Boyfriend May Become Abusive": "//www.wikihow.com/Recognize-Warning-Signs-that-Your-Boyfriend-May-Become-Abusive",
-# "Be Calm on a First Date": "//www.wikihow.com/Be-Calm-on-a-First-Date",
-# "Know if He's Husband Material": "//www.wikihow.com/Know-if-He%27s-Husband-Material",
-# "Have a Grand Date": "//www.wikihow.com/Have-a-Grand-Date",
-# "Become Good Friends With Someone": "//www.wikihow.com/Become-Good-Friends-With-Someone",
-# "Encourage People": "//www.wikihow.com/Encourage-People",
-# "Accept Rejection When You Tell a Friend You Love Them": "//www.wikihow.com/Accept-Rejection-When-You-Tell-a-Friend-You-Love-Them",
-# "Show a Friend That You Care": "//www.wikihow.com/Show-a-Friend-That-You-Care",
-# "Stop Being Possessive About a Friend": "//www.wikihow.com/Stop-Being-Possessive-About-a-Friend",
-# "Know if Your Friend Is Really a Friend": "//www.wikihow.com/Know-if-Your-Friend-Is-Really-a-Friend",
-# "Calm a Girl Down": "//www.wikihow.com/Calm-a-Girl-Down",
-# "Be Less Annoying Towards Friends": "//www.wikihow.com/Be-Less-Annoying-Towards-Friends",
-# "Stop Talking About Friends Behind Their Backs": "//www.wikihow.com/Stop-Talking-About-Friends-Behind-Their-Backs",
-# "Deal With a Friend Who Copies You": "//www.wikihow.com/Deal-With-a-Friend-Who-Copies-You",
-# "Deal With a Friend Who Constantly Talks About Her Boyfriend": "//www.wikihow.com/Deal-With-a-Friend-Who-Constantly-Talks-About-Her-Boyfriend",
-# "Get Your Best Friend to Stop Teasing You": "//www.wikihow.com/Get-Your-Best-Friend-to-Stop-Teasing-You",
-# "Encourage a Friend": "//www.wikihow.com/Encourage-a-Friend",
-# "Choose Between Friends": "//www.wikihow.com/Choose-Between-Friends",
-# "Fall In Love with Your Best Friend": "//www.wikihow.com/Fall-In-Love-with-Your-Best-Friend",
-# "Hang out With Your Girl Friends when You're the Only Guy Around": "//www.wikihow.com/Hang-out-With-Your-Girl-Friends-when-You%27re-the-Only-Guy-Around",
-# "Stay Close to an Old Friend when at Different Schools, Universities or Jobs": "//www.wikihow.com/Stay-Close-to-an-Old-Friend-when-at-Different-Schools,-Universities-or-Jobs",
-# "Choose a Housemate": "//www.wikihow.com/Choose-a-Housemate",
+def build_tasks(category, method, title=nil)
+  task = Task.new(category: category, title: title)
+  method["steps"].each { |step| build_steps(step, task) }
+end
 
-#PRODUCTIVITY ARTICLES
-# "Prioritize": "//www.wikihow.com/Prioritize",
-# "Work Faster": "//www.wikihow.com/Work-Faster",
-# "Have a Productive Day": "//www.wikihow.com/Have-a-Productive-Day",
-# "Be Productive": "//www.wikihow.com/Be-Productive",
-# "Calculate Productivity": "//www.wikihow.com/Calculate-Productivity",
-# "Avoid Distractions": "//www.wikihow.com/Avoid-Distractions",
-# "Be Efficient": "//www.wikihow.com/Be-Efficient",
-# "Use Your Time Productively": "//www.wikihow.com/Use-Your-Time-Productively",
-# "Have a Productive Workweek": "//www.wikihow.com/Have-a-Productive-Workweek",
-# "Spend the Weekend Doing Something Productive": "//www.wikihow.com/Spend-the-Weekend-Doing-Something-Productive",
-# "Check Your Efficiency at Work with Chess Clocks": "//www.wikihow.com/Check-Your-Efficiency-at-Work-with-Chess-Clocks",
-# "Be Productive at Work": "//www.wikihow.com/Be-Productive-at-Work",
-# "Work Hard Without Any Expectations": "//www.wikihow.com/Work-Hard-Without-Any-Expectations",
-# "Eliminate All but the Absolute Essential Tasks": "//www.wikihow.com/Eliminate-All-but-the-Absolute-Essential-Tasks",
-# "Be Productive at Work During a Slow Week": "//www.wikihow.com/Be-Productive-at-Work-During-a-Slow-Week",
-# "Reduce Everyday Distractions": "//www.wikihow.com/Reduce-Everyday-Distractions",
-# "Be Productive While Entertaining Yourself": "//www.wikihow.com/Be-Productive-While-Entertaining-Yourself",
-# "Efficiently Work Offline": "//www.wikihow.com/Efficiently-Work-Offline",
+def build_steps(step, task)
+  content = step["html"] == "" ? step["summary"] : step["html"]
+  step = Step.new(title: step["summary"], content: content, task: task)
+end
 
-#HEALTH
-# "Be Healthy": "//www.wikihow.com/Be-Healthy",
-# "Calculate Your Body Age": "//www.wikihow.com/Calculate-Your-Body-Age",
-# "Create a Wellness Plan": "//www.wikihow.com/Create-a-Wellness-Plan",
-# "Have a Good General Healthy Body": "//www.wikihow.com/Have-a-Good-General-Healthy-Body",
-# "Be Healthy and Happy": "//www.wikihow.com/Be-Healthy-and-Happy",
-# "Stay Fit and Beautifully Healthy": "//www.wikihow.com/Stay-Fit-and-Beautifully-Healthy",
-# "Lead a Healthy Life": "//www.wikihow.com/Lead-a-Healthy-Life",
-# "Maintain Your Health": "//www.wikihow.com/Maintain-Your-Health",
-# "Live a Healthier Life": "//www.wikihow.com/Live-a-Healthier-Life",
-# "Prevent Home Accidents": "//www.wikihow.com/Prevent-Home-Accidents"
-# "Rarely Get Sick": "//www.wikihow.com/Rarely-Get-Sick",
-# "Improve Your Health": "//www.wikihow.com/Improve-Your-Health",
-# "Keep Your Body Fit and Strong": "//www.wikihow.com/Keep-Your-Body-Fit-and-Strong",
-# "Do a Health Assessment": "//www.wikihow.com/Do-a-Health-Assessment",
-# "Stay Fit and Healthy": "//www.wikihow.com/Stay-Fit-and-Healthy",
-# "Be Mentally and Physically Healthy": "//www.wikihow.com/Be-Mentally-and-Physically-Healthy",
-# "Stay Healthy and Active": "//www.wikihow.com/Stay-Healthy-and-Active",
-# "Take Control of Your Health": "//www.wikihow.com/Take-Control-of-Your-Health",
-# "Stay Healthy During the Winter": "//www.wikihow.com/Stay-Healthy-During-the-Winter",
-# "Look Healthier": "//www.wikihow.com/Look-Healthier",
-# "Be Healthier in 14 Days": "//www.wikihow.com/Be-Healthier-in-14-Days",
-# "Stay Healthy With Busy Schedules": "//www.wikihow.com/Stay-Healthy-With-Busy-Schedules",
-# "Be Healthier Without a Dramatic Lifestyle Change": "//www.wikihow.com/Be-Healthier-Without-a-Dramatic-Lifestyle-Change",
-# "Keep a Health Journal": "//www.wikihow.com/Keep-a-Health-Journal",
-# "Stay Healthy in Small Ways": "//www.wikihow.com/Stay-Healthy-in-Small-Ways",
-# "Get a Little Healthier While Staying Just as Lazy": "//www.wikihow.com/Get-a-Little-Healthier-While-Staying-Just-as-Lazy",
-# "Avoid Unhealthy Health Goals": "//www.wikihow.com/Avoid-Unhealthy-Health-Goals",
-# "Get Better Health in 10 Minutes a Day": "//www.wikihow.com/Get-Better-Health-in-10-Minutes-a-Day",
-# "Be More Aware of Your Health": "//www.wikihow.com/Be-More-Aware-of-Your-Health",
-# "Stay Healthy when Working from Home": "//www.wikihow.com/Stay-Healthy-when-Working-from-Home",
-# "Avoid Injuring Yourself": "//www.wikihow.com/Avoid-Injuring-Yourself",
-# "Avoid the Dangers of Sitting": "//www.wikihow.com/Avoid-the-Dangers-of-Sitting",
-# "Begin Living Healthier": "//www.wikihow.com/Begin-Living-Healthier",
-# "Get Healthier Using a Diary": "//www.wikihow.com/Get-Healthier-Using-a-Diary",
-# "Include a Rest Day in Your Exercise Routine": "//www.wikihow.com/Include-a-Rest-Day-in-Your-Exercise-Routine",
-# "Be Healthier with Minimal Effort": "//www.wikihow.com/Be-Healthier-with-Minimal-Effort",
-# "Educate Others on the Importance of Injury Prevention": "//www.wikihow.com/Educate-Others-on-the-Importance-of-Injury-Prevention",
-# "Complete a Wellness Challenge": "//www.wikihow.com/Complete-a-Wellness-Challenge",
+def url_multi(category, url)
+  article = parse_article(url)
+  article = article["app"]["sections"].find { |section| section["type"] == "steps" }
+  methods = article["methods"]
+  methods.each { |method| build_tasks(category, method, method["name"]) }
+end
 
+def url_single(category, url)
+  article = parse_article(url)
+  title = article["app"]["title"]
+  method = article["app"]["sections"].find { |section| section["type"] == "steps" }["methods"][0]
+  build_tasks(category, method, title)
 
+housekeeping_articles = [
+                          "Sort-Laundry",
+                          "Reduce-Laundry-Wrinkles",
+                          "Clean-Up-Spilled-Laundry-Detergent",
+                          "Sort-Laundry-by-Colors",
+                          "Do-Your-Laundry-in-a-Dorm",
+                          "Wash-Knitted-Blankets",
+                          "Iron-Silk",
+                          "Iron-Without-an-Ironing-Board",
+                          "Remove-Wrinkles-from-Clothes-Without-an-Iron",
+                          "Iron-a-Suit-Jacket",
+                          "Fold-Clothes",
+                          "Fold-a-Dress",
+                          "Fold-Clothes-Fast",
+                          "Fold-a-Sweater",
+                          "Clean-Smoke-Damage",
+                          "Clean-Light-Switches",
+                          "Clean-Your-House-or-Apartment-Quickly-and-Effectively",
+                          "Clean-a-Living-Room",
+                          "Keep-Your-House-Clean",
+                          "Clean-Your-House-After-a-Wild-Party",
+                          "Clean-a-Man-Cave",
+                          "Clean-a-Kitchen",
+                          "Clean-a-Bathroom-Sink",
+                          "Unclog-a-Toilet-with-Dish-Soap",
+                          "Clean-Your-Bathroom-Fast",
+                          "Clean-Water-Pipes"
+                        ]
+
+relationship_articles = [
+                          "Know-when-Someone-Likes-You",
+                          "Cuddle",
+                          "Make-a-Guy-Jealous",
+                          "Get-Someone-to-Like-You",
+                          "Not-Fall-in-Love-With-Someone",
+                          "Care-for-Your-Upset-Boyfriend",
+                          "Ask-a-Guy-to-Be-Your-Boyfriend",
+                          "Get-in-a-Relationship",
+                          "Avoid-People-You-Don%27t-Want-to-Talk-To",
+                          "Find-Out-if-a-Person-Actually-Misses-You",
+                          "Get-Your-Girlfriend-to-Forgive-You",
+                          "Make-Someone-Love-You-Again",
+                          "Understand-Platonic-Love-and-Friendship",
+                          "Build-a-Healthy-Relationship",
+                          "Understand-What-a-Relationship-Means",
+                          "Treat-Girls-With-Respect",
+                          "React-After-Saying-%22I-Love-You%22",
+                          "Plan-a-Special-Night-Out",
+                          "Love-Someone-The-Way-He-Is",
+                          "Get-Your-Girlfriend-to-Love-You-Again",
+                          "Find-Healing-in-Forgiveness",
+                          "Love-Again",
+                          "End-a-Toxic-Relationship",
+                          "Leave-a-Married-Man",
+                          "Show-a-Girl-You-Like-Her",
+                          "Date-Girls",
+                          "Tell-if-a-Boy-Loves-You",
+                          "Date",
+                          "Be-a-Good-Girlfriend",
+                          "Know-if-You-Are-in-the-Friend-Zone",
+                          "Tell-Someone-You-Don%27t-Want-to-Date-Them-Without-Hurting-Them",
+                          "Give-Your-Girlfriend-an-Unforgettable-Birthday",
+                          "Be-Happy-After-Love-Failure",
+                          "Learn-Patience-in-a-Relationship",
+                          "Get-over-Someone-Who-You-Know-You-Can%27t-Date",
+                          "Decide-if-You-Are-Attracted-to-Someone",
+                          "Be-a-Protective-Boyfriend",
+                          "Break-up-With-Your-Significant-Other-when-You-Are-Already-Dating-Someone-Else",
+                          "Stop-Your-Partner-from-Swearing",
+                          "Deal-With-a-Jealous-Girlfriend",
+                          "Win-a-Man%27s-Heart",
+                          "Recognize-Warning-Signs-that-Your-Boyfriend-May-Become-Abusive",
+                          "Be-Calm-on-a-First-Date",
+                          "Know-if-He%27s-Husband-Material",
+                          "Have-a-Grand-Date",
+                          "Become-Good-Friends-With-Someone",
+                          "Encourage-People",
+                          "Accept-Rejection-When-You-Tell-a-Friend-You-Love-Them",
+                          "Show-a-Friend-That-You-Care",
+                          "Stop-Being-Possessive-About-a-Friend",
+                          "Know-if-Your-Friend-Is-Really-a-Friend",
+                          "Calm-a-Girl-Down",
+                          "Be-Less-Annoying-Towards-Friends",
+                          "Stop-Talking-About-Friends-Behind-Their-Backs",
+                          "Deal-With-a-Friend-Who-Copies-You",
+                          "Deal-With-a-Friend-Who-Constantly-Talks-About-Her-Boyfriend",
+                          "Get-Your-Best-Friend-to-Stop-Teasing-You",
+                          "Encourage-a-Friend",
+                          "Choose-Between-Friends",
+                          "Fall-In-Love-with-Your-Best-Friend",
+                          "Hang-out-With-Your-Girl-Friends-when-You%27re-the-Only-Guy-Around",
+                          "Stay-Close-to-an-Old-Friend-when-at-Different-Schools,-Universities-or-Jobs",
+                          "Choose-a-Housemate"
+                        ]
+
+productivity_articles = [
+                          "Prioritize",
+                          "Work-Faster",
+                          "Have-a-Productive-Day",
+                          "Be-Productive",
+                          "Calculate-Productivity",
+                          "Avoid-Distractions",
+                          "Be-Efficient",
+                          "Use-Your-Time-Productively",
+                          "Have-a-Productive-Workweek",
+                          "Spend-the-Weekend-Doing-Something-Productive",
+                          "Check-Your-Efficiency-at-Work-with-Chess-Clocks",
+                          "Be-Productive-at-Work",
+                          "Work-Hard-Without-Any-Expectations",
+                          "Eliminate-All-but-the-Absolute-Essential-Tasks",
+                          "Be-Productive-at-Work-During-a-Slow-Week",
+                          "Reduce-Everyday-Distractions",
+                          "Be-Productive-While-Entertaining-Yourself",
+                          "Efficiently-Work-Offline"
+                        ]
+
+health_articles = [
+                    "Be-Healthy",
+                    "Calculate-Your-Body-Age",
+                    "Create-a-Wellness-Plan",
+                    "Have-a-Good-General-Healthy-Body",
+                    "Be-Healthy-and-Happy",
+                    "Stay-Fit-and-Beautifully-Healthy",
+                    "Lead-a-Healthy-Life",
+                    "Maintain-Your-Health",
+                    "Live-a-Healthier-Life",
+                    "Prevent-Home-Accidents",
+                    "Rarely-Get-Sick",
+                    "Improve-Your-Health",
+                    "Keep-Your-Body-Fit-and-Strong",
+                    "Do-a-Health-Assessment",
+                    "Stay-Fit-and-Healthy",
+                    "Be-Mentally-and-Physically-Healthy",
+                    "Stay-Healthy-and-Active",
+                    "Take-Control-of-Your-Health",
+                    "Stay-Healthy-During-the-Winter",
+                    "Look-Healthier",
+                    "Be-Healthier-in-14-Days",
+                    "Stay-Healthy-With-Busy-Schedules",
+                    "Be-Healthier-Without-a-Dramatic-Lifestyle-Change",
+                    "Keep-a-Health-Journal",
+                    "Stay-Healthy-in-Small-Ways",
+                    "Get-a-Little-Healthier-While-Staying-Just-as-Lazy",
+                    "Avoid-Unhealthy-Health-Goals",
+                    "Get-Better-Health-in-10-Minutes-a-Day",
+                    "Be-More-Aware-of-Your-Health",
+                    "Stay-Healthy-when-Working-from-Home",
+                    "Avoid-Injuring-Yourself",
+                    "Avoid-the-Dangers-of-Sitting",
+                    "Begin-Living-Healthier",
+                    "Get-Healthier-Using-a-Diary",
+                    "Include-a-Rest-Day-in-Your-Exercise-Routine",
+                    "Be-Healthier-with-Minimal-Effort",
+                    "Educate-Others-on-the-Importance-of-Injury-Prevention",
+                    "Complete-a-Wellness-Challenge"
+                  ]
+
+wallet_urls.each { |url| url_multi(wallet, url) }
+food_urls.each { |url| url_multi(food, url) }
+health_articles.each { |article| url_single(health, "#{base_url}#{article}")}
+housekeeping_articles.each { |article| url_single(housekeeping, "#{base_url}#{article}")}
+productivity_articles.each { |article| url_single(productivity, "#{base_url}#{article}")}
+relationship_articles.each { |article| url_single(relationship, "#{base_url}#{article}")}
