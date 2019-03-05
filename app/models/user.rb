@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :tasks, through: :user_tasks
 
   validates :username, presence: true, uniqueness: true, length: { minimum: 4 }
-  validates :gender, presence: true, default: false
+  validates :gender, inclusion: { in: [true, false] }, default: false
   validates :location, presence: true
 
   devise :database_authenticatable, :registerable,
