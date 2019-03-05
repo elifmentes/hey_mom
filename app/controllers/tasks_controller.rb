@@ -1,13 +1,17 @@
 class TasksController < ApplicationController
-  before_action :find_category
+  before_action :set_tasks
 
   def index
-    @tasks = Task.where(category: @category)
+  end
+
+  def show
+    @task = @tasks.find(params[:id])
   end
 
   private
 
-  def find_category
+  def set_tasks
     @category = Category.find(params[:category_id])
+    @tasks = Task.where(category: @category)
   end
 end
