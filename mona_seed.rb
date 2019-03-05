@@ -12,17 +12,16 @@ end
 def build_tasks(category, method)
   title = method["name"]
   task = Task.create(category: category, title: title)
-  method.steps.each do { |step| build_steps(step, task) }
+  method["steps"].each { |step| build_steps(step, task) }
 end
 
 def build_steps(step, task)
-  Step.create(title: , content: , task: )
+  Step.create(title: step["summary"], content: step["html"] , task: task)
 end
 
 wallet_urls.each do |url|
   article = parse_article(url)
   methods = article["methods"]
-  methods.each { |method| build_tasks("wallet", method) }
-
+  methods.each { |method| build_tasks(Category.where(name: "Wallet").first, method) }
 end
 
