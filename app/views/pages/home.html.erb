@@ -1,7 +1,14 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-
+<div class="row">
+    <div class="col-xs-12 box">
+      <div class="logo">
+        <h1>Hey Mom</h1>
+        <h4>If in doubt, ask your mom</h4>
+      </div>
+       <button class="btn btn-light" style="color:white">
+         <%= link_to "Log In", new_user_session_path %>
+       </button>
+       <div class="sign-up">
+        <p>Don't have an account yet? <%= link_to "Sign Up", new_user_registration_path %></p>
+       </div>
     </div>
-  </div>
 </div>
