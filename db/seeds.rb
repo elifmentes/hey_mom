@@ -51,9 +51,7 @@ def url_single(category, url)
   title = article["app"]["title"]
   method = article["app"]["sections"].find { |section| section["type"] == "steps" }["methods"][0]
   build_tasks(category, method, title)
-end
 
-# HOUSEKEEPING TASKS APIS
 housekeeping_articles = [
                           "Sort-Laundry",
                           "Reduce-Laundry-Wrinkles",
@@ -83,7 +81,6 @@ housekeeping_articles = [
                           "Clean-Water-Pipes"
                         ]
 
-# RELATIONSHIP TASKS API
 relationship_articles = [
                           "Know-when-Someone-Likes-You",
                           "Cuddle",
@@ -171,7 +168,6 @@ productivity_articles = [
                           "Efficiently-Work-Offline"
                         ]
 
-#HEALTH
 health_articles = [
                     "Be-Healthy",
                     "Calculate-Your-Body-Age",
