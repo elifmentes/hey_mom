@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :user_tasks
   has_many :tasks, through: :user_tasks
+  has_many :transactions
 
   validates :username, presence: true, uniqueness: true, length: { minimum: 4 }
   validates :gender, inclusion: { in: [true, false] }, default: false
