@@ -1,5 +1,16 @@
-<ul>
-  <% @task.steps.reverse.each do |step| %>
-    <li><%= link_to step.title.remove(/<.*?>/), category_task_step_path(@category, @task, step) %></li>
-  <% end %>
-</ul>
+
+<div class="container">
+  <h2><%= @task.title %></h2>
+  <i class="fas fa-chevron-left hidden" id="back-button"></i>
+  <div>
+    <div id="steps" data-steps="<%= @steps.reverse.to_json %>">
+      <p id="step-title"><%= @steps.reverse.first.title %></p>
+      <p id="step-content"></p>
+    </div>
+    <div class="buttons">
+      <button type="button" class="step-buttons" id="nope-button">Nope</button>
+      <button type="button" class="step-buttons" id="yes-button">Sure</button>
+    </div>
+  </div>
+</div>
+
