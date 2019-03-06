@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+  searchkick
+
   belongs_to :category
   has_many :steps
 
