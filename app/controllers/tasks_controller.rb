@@ -1,8 +1,18 @@
+require 'pry-byebug'
+
 class TasksController < ApplicationController
-  before_action :set_tasks
+  before_action :set_tasks, only: [:show]
+
+  def index
+    if params[:query].present?
+      @tasks = Task.search(params[:query])
+    else
+      @tasks = Task.all
+    end
+  end
 
   def show
-    @task = @tasks.find(params[:id])
+    @task = Task.find(params[:id])
     @steps = @task.steps
   end
 
@@ -10,11 +20,5 @@ class TasksController < ApplicationController
 
   def set_tasks
     @category = Category.find(params[:category_id])
-
-    if params[:query].present?
-      @tasks = Task.where(category: @category, title: params[:query])
-    else
-      @tasks = Task.where(category: @category)
-    end
   end
 end
