@@ -3,6 +3,7 @@ class TasksController < ApplicationController
 
   def show
     @task = @tasks.find(params[:id])
+    @steps = @task.steps
   end
 
   private
