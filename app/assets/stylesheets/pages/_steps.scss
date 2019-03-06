@@ -1,0 +1,24 @@
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  left: 15px;
+}
+
+.step-buttons {
+  height: 50px;
+  width: 150px;
+  border: 1px solid white;
+  border-radius: 10px;
+  background: transparent;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+#step-content {
+  font-size: 10px;
+}
