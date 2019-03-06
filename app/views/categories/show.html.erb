@@ -1,7 +1,14 @@
 <div class="categories">
   <h1 class="category-title"><%= @category.name %></h1>
+  <%= form_tag category_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search for a task"
+    %>
+  <% end %>
   <ul class="category-tasks">
-    <% @category.tasks.each do |task| %>
+    <% @tasks.each do |task| %>
       <li><%= link_to task.title, category_task_path(@category, task) %></li>
     <% end %>
   </ul>
