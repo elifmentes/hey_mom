@@ -1,0 +1,6 @@
+<%= current_user.username.capitalize %>'s Transactions
+<ul>
+  <% @transactions.each do |t| %>
+  <li><%= t.amount %> <%= t.date %></li>
+  <% end %>
+</ul>
