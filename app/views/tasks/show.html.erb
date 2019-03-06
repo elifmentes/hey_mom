@@ -1,3 +1,4 @@
+
 <ul>
   <% @task.steps.reverse.each do |step| %>
     <li><%= link_to step.title.remove(/<.*?>/), category_task_step_path(@category, @task, step) %></li>
