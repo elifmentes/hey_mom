@@ -6,6 +6,7 @@ const initTaskSteps = () => {
   const back = document.getElementById('back-button');
   const noButton = document.getElementById('nope-button');
   const stepContent = document.getElementById('step-content');
+
   // yesButton.addEventListener('click', () => {
   //   const activeStepId = step.dataset.stepId;
   //   const nextStep = steps.filter(step => step.id > activeStepId)[0];
