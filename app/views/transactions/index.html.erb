@@ -22,14 +22,28 @@
       </div>
     </div>
     <div class="balance-container">
-      <% @transactions.each do |t| %>
+      <div class=balance-date>Today is <%= Date.today.strftime("%B %d, %Y") %></div>
+      <% @transactions[0..7].each do |t| %>
         <div class="balance-row">
           <div class="balance-row-icon">
-            <% if  %>
-
+            <% if t.category.nil? %>
+              <i class="fas fa-search-dollar"></i>
+            <% elsif t.category == "Housing" %>
+              <i class="fas fa-home"></i>
+            <% elsif t.category == "Debt" %>
+              <i class="fas fa-money-bill-wave"></i>
+            <% elsif t.category == "Transportation" %>
+              <i class="fas fa-bus"></i>
+            <% elsif t.category == "Food" %>
+              <i class="fas fa-utensils"></i>
+            <% elsif t.category == "Personal" %>
+              <i class="fas fa-user"></i>
             <% end %>
           </div>
-          <div class="balance-row-description"><%= t.description %></div>
+          <div class="balance-row-content">
+            <div class="balance-row-description"><%= t.description %></div>
+            <div class="balance-row-duedate"><%= t.date ? "Due: #{t.date.strftime("%b-%d")}" : " " %></div>
+          </div>
           <% if t.expense == true %>
             <div class="balance-expense balance-row-amount">
           <% else %>
@@ -37,9 +51,14 @@
           <% end %>
             <%= t.amount %>
           </div>
-          <div class="balance-row-duedate"><%= t.date ? "Due: #{t.date.strftime("%b-%d")}" : " " %></div>
+
         </div>
       <% end %>
+      <div class="balance-new">
+        <%= link_to new_transaction_path do %>
+          <i class="fas fa-plus"></i>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

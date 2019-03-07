@@ -14,7 +14,6 @@
     display: flex;
     justify-content: space-between;
   }
-  background-color: black;
   padding: 1rem;
   border-radius: 5px 5px 0 0;
   p:last-child {
@@ -35,20 +34,43 @@
   color: black;
   height: 76vh;
   padding: 0 1rem;
-  border-radius: 0 0 5px 5px;
+  border-radius: 5px;
   .balance-row {
     border: solid $light-gray;
     border-width: 0 0 1px 0;
   }
+  .balance-date {
+    opacity: 0.8;
+    font-size: 1.6rem;
+  }
+  .balance-new {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 3rem;
+  }
 }
 
 .balance-row {
-  // display: flex;
-  height: 7vh;
-  .balance-row-description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 8vh;
+  .balance-row-icon {
+    flex: 0 0 60px;
+    font-size: 3rem;
+    padding: 0 1rem;
   }
-  .balance-row-amount {
-  }
-  .balance-row-duedate {
+
+  .balance-row-content {
+    flex: 1 1 auto;
+    .balance-row-description {
+      font-size: 1.8rem;
+    }
+    .balance-row-duedate {
+      font-size: 1.4rem;
+      height: 2rem;
+      color: rgba(0,0,0,0.5);
+    }
   }
 }
+

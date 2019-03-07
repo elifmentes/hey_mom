@@ -5,10 +5,30 @@ class TransactionsController < ApplicationController
     @monthly_expense = calculate_balance(true)
   end
 
+  def new
+    @transaction = Transaction.new
+  end
+
+  def create
+
+  end
+
+  def edit
+
+  end
+
+  def update
+
+  end
+
+  def delete
+
+  end
+
   private
 
   def set_transactions
-    @transactions = Transaction.where(user: current_user)
+    @transactions = Transaction.where(user: current_user).order(id: :desc)
   end
 
   def calculate_balance(expense)
