@@ -8,4 +8,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :gender, :location])
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :gender, :location])
   end
+
+  protected
+
+  def after_sign_in_path_for(resource)
+    categories_path
+  end
 end
