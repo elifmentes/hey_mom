@@ -24,15 +24,20 @@
     <div class="balance-container">
       <% @transactions.each do |t| %>
         <div class="balance-row">
-          <div><%= t.description %></div>
+          <div class="balance-row-icon">
+            <% if  %>
+
+            <% end %>
+          </div>
+          <div class="balance-row-description"><%= t.description %></div>
           <% if t.expense == true %>
-            <div class="balance-expense">
+            <div class="balance-expense balance-row-amount">
           <% else %>
-            <div class="balance-income">
+            <div class="balance-income balance-row-amount">
           <% end %>
             <%= t.amount %>
           </div>
-          <div><%= t.date ? "Due: #{t.date}" : " " %></div>
+          <div class="balance-row-duedate"><%= t.date ? "Due: #{t.date.strftime("%b-%d")}" : " " %></div>
         </div>
       <% end %>
     </div>

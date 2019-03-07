@@ -7,6 +7,7 @@
 }
 
 .balance-summary {
+  margin-top: -2rem;
   h1 {
     font-size: 2rem;
     margin-top: 0;
@@ -32,8 +33,22 @@
 .balance-container {
   background-color: rgba(255,255,255,0.6);
   color: black;
-  height: 70vh;
+  height: 76vh;
+  padding: 0 1rem;
+  border-radius: 0 0 5px 5px;
   .balance-row {
+    border: solid $light-gray;
+    border-width: 0 0 1px 0;
+  }
+}
 
+.balance-row {
+  // display: flex;
+  height: 7vh;
+  .balance-row-description {
+  }
+  .balance-row-amount {
+  }
+  .balance-row-duedate {
   }
 }
