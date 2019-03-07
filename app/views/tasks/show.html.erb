@@ -4,8 +4,9 @@
   <i class="fas fa-chevron-left hidden" id="back-button"></i>
   <div>
     <div id="steps" data-steps="<%= @steps.reverse.to_json %>">
-      <p id="step-title"><%= @steps.reverse.first.title %></p>
+      <p id="step-title" class="speech-bubble"><%= @steps.reverse.first.title %></p>
       <p id="step-content"></p>
+      <iframe id="video-content" class="hidden" src="https://www.youtube.com/embed/OADWPpXPjGg"  frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="buttons">
       <button type="button" class="step-buttons" id="nope-button">Nope</button>
