@@ -3,28 +3,21 @@
   margin: 0;
   text-align: center;
   font-size: 4rem;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 }
 
 .category-tasks {
   padding-left: 0;
-  list-style-type: none;
-  color: white;
+  list-style: none;
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    border: 3px solid white;
+    border-radius: 32px;
+    height: 64px;
+    margin: 10px 0px;
+    padding: 0 2rem;
+  }
 }
-
-.category-tasks li {
-  border: 3px solid white;
-  border-radius: 32px;
-  height: 64px;
-  margin: 10px 0px;
-  text-align: center;
-  line-height: 58px;
-  padding: 0 1rem;
-}
-
-.category-tasks a {
-  color: white;
-  vertical-align: middle;
-  line-height: normal;
-}
-
