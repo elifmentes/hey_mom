@@ -3,7 +3,6 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right">
 
-    <% if user_signed_in? %>
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
@@ -25,10 +24,6 @@
             </ul>
         </div>
       </div>
-    <% else %>
-      <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <% end %>
   </div>
 </div>
 
