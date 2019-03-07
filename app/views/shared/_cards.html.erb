@@ -1,3 +1,6 @@
 <div class="card">
-  <div class="card-category">@category.name</div>
+  <% @categories.each do |category| %>
+  <div class="card-category"><%= link_to category.name, category_path(category) %>
+  </div>
+  <% end %>
 </div>
