@@ -5,7 +5,9 @@ const initTaskSteps = () => {
   const yesButton = document.getElementById('yes-button');
   const back = document.getElementById('back-button');
   const noButton = document.getElementById('nope-button');
-  const stepContent = document.getElementById('step-content');
+  let content = document.getElementById('step-content');
+  let videoContent = document.getElementById('video-content');
+  // const stepContent = document.getElementById('step-content');
 
   // yesButton.addEventListener('click', () => {
   //   const activeStepId = step.dataset.stepId;
@@ -23,7 +25,8 @@ const initTaskSteps = () => {
   yesButton.addEventListener("click", (event) => {
     if (counter < size) {
       counter += 1;
-      stepContent.innerHTML = '';
+      content.classList.remove("speech-bubble");
+      content.innerHTML = '';
       step.innerHTML = '';
       step.innerHTML = steps[counter].title;
     }
@@ -35,7 +38,8 @@ const initTaskSteps = () => {
 
   back.addEventListener("click", (event) => {
     counter -= 1;
-    stepContent.innerHTML = '';
+    content.classList.remove("speech-bubble");
+    content.innerHTML = '';
     step.innerHTML = steps[counter].title;
     if (counter < 1) {
       back.classList.add('hidden');
@@ -44,11 +48,19 @@ const initTaskSteps = () => {
     console.log(counter);
   });
 
-  noButton.addEventListener("click", (event) => {
-    stepContent.innerHTML = '';
-    stepContent.innerHTML = steps[counter].content;
-  });
+  if(content.innerHTML == "") {
+    noButton.addEventListener("click", (event) => {
+      content.classList.add("speech-bubble");
+      content.innerHTML = '';
+      content.innerHTML = steps[counter].content;
+      if(content.innerHTML === steps[counter].content) {
+        noButton.addEventListener("click", (event) => {
+          videoContent.classList.remove('hidden');
+          videoContent.classList.add("speech-bubble");
+        });
+      }
+    });
+  };
 };
 
 export { initTaskSteps };
-

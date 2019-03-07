@@ -1,8 +1,2 @@
-<%= form_tag tasks_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Search for a task",
-      value: ''
-    %>
-<% end %>
+<%= render 'shared/search'%>
+<%= render 'shared/cards'%>
