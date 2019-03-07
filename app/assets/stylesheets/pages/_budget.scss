@@ -1,6 +1,39 @@
 .balance-income {
-  color: green;
+  color: $green;
 }
+
 .balance-expense {
-  color: red;
+  color: $red;
+}
+
+.balance-summary {
+  h1 {
+    font-size: 2rem;
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  background-color: black;
+  padding: 1rem;
+  border-radius: 5px 5px 0 0;
+  p:last-child {
+    margin-bottom: 0;
+  }
+  .summary-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .balance-type {
+    font-size: 12px;
+    opacity: 0.6;
+  }
+}
+
+.balance-container {
+  background-color: rgba(255,255,255,0.6);
+  color: black;
+  height: 70vh;
+  .balance-row {
+
+  }
 }

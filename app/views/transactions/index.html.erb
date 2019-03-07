@@ -1,39 +1,40 @@
 <div class="row">
   <div class="col-xs-12 col-sm-6 col-sm-offset-3">
     <div class="balance-summary">
-      <p>
-        Your wallet has 60000.
-      </p>
-      <p class="balance-income">
-        Your earned 6000 this month.
-      </p>
-      <p class="balance-expense">
-        Your spent 2000 this month.
-      </p>
+      <h1>
+        Monthly Summary
+        <% if @monthly_income < @monthly_expense %>
+          <span class="balance-expense text-right">- $<%= (@monthly_income - @monthly_expense).abs %>
+        <% else %>
+          <span class="balance-income text-right">+ $<%= (@monthly_income - @monthly_expense).abs %>
+        <% end %>
+        </span>
+      </h1>
+      <div class="summary-container">
+        <div>
+          <div class="balance-type">Income:</div>
+          <div class="balance-amount balance-income">$<%= @monthly_income %></div>
+        </div>
+        <div>
+          <div class="balance-type">Expense:</div>
+          <div class="balance-amount balance-expense">$<%= @monthly_expense %></div>
+        </div>
+      </div>
     </div>
-    <table class="balance-table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Description</th>
-          <th>Amount</th>
-          <th>Due Date</th>
-          <th>balance</th>
-        </tr>
-      </thead>
-      <% @transactions.each_with_index do |t, index| %>
-        <tr>
-          <td><%= t.created_at.strftime("%b %d") %></td>
-          <td><%= t.description %></td>
+    <div class="balance-container">
+      <% @transactions.each do |t| %>
+        <div class="balance-row">
+          <div><%= t.description %></div>
           <% if t.expense == true %>
-            <td class="balance-expense"><%= t.amount %></td>
+            <div class="balance-expense">
           <% else %>
-            <td class="balance-income"><%= t.amount %></td>
+            <div class="balance-income">
           <% end %>
-          <td><%= t.date.nil? ? t.date : "getttttt" %></td>
-          <td></td>
-        </tr>
+            <%= t.amount %>
+          </div>
+          <div><%= t.date ? "Due: #{t.date}" : " " %></div>
+        </div>
       <% end %>
-    </table>
+    </div>
   </div>
 </div>
