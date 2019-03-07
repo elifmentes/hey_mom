@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-  searchkick
+
 
   has_many :tasks
 
