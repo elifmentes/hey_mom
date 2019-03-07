@@ -1,25 +1,25 @@
-require "open-uri"
-require "JSON"
+# require "open-uri"
+# require "JSON"
 
-UserTask.destroy_all
-User.destroy_all
-Step.destroy_all
-Task.destroy_all
-Category.destroy_all
+# UserTask.destroy_all
+# User.destroy_all
+# Step.destroy_all
+# Task.destroy_all
+# Category.destroy_all
 
-admin = User.create(email: "adminadmin@adminadmin.com",
-        password: "password",
-        username: "admin",
-        gender: false,
-        location: "Lisbon"
-        )
+# admin = User.create(email: "adminadmin@adminadmin.com",
+#         password: "password",
+#         username: "admin",
+#         gender: false,
+#         location: "Lisbon"
+#         )
 
-wallet = Category.create(name: "Wallet")
-food = Category.create(name: "Food")
-health = Category.create(name: "Health")
-housekeeping = Category.create(name: "Housekeeping")
-productivity = Category.create(name: "Productivity")
-relationship = Category.create(name: "Relationship")
+# wallet = Category.create(name: "Wallet")
+# food = Category.create(name: "Food")
+# health = Category.create(name: "Health")
+# housekeeping = Category.create(name: "Housekeeping")
+# productivity = Category.create(name: "Productivity")
+# relationship = Category.create(name: "Relationship")
 
 base_url = "https://www.wikihow.com/api.php?format=json&action=app&subcmd=article&name="
 wallet_urls = ["https://www.wikihow.com/api.php?format=json&action=app&subcmd=article&name=Make-Money-as-a-College-Student", "https://www.wikihow.com/api.php?format=json&action=app&subcmd=article&name=Save-Money-As-a-Student"]
@@ -211,9 +211,27 @@ health_articles = [
                     "Complete-a-Wellness-Challenge"
                   ]
 
-wallet_urls.each { |url| url_multi(wallet, url) }
-food_urls.each { |url| url_multi(food, url) }
-health_articles.each { |article| url_single(health, "#{base_url}#{article}") }
-housekeeping_articles.each { |article| url_single(housekeeping, "#{base_url}#{article}") }
-productivity_articles.each { |article| url_single(productivity, "#{base_url}#{article}") }
-relationship_articles.each { |article| url_single(relationship, "#{base_url}#{article}") }
+# wallet_urls.each { |url| url_multi(wallet, url) }
+# food_urls.each { |url| url_multi(food, url) }
+# health_articles.each { |article| url_single(health, "#{base_url}#{article}") }
+# housekeeping_articles.each { |article| url_single(housekeeping, "#{base_url}#{article}") }
+# productivity_articles.each { |article| url_single(productivity, "#{base_url}#{article}") }
+# relationship_articles.each { |article| url_single(relationship, "#{base_url}#{article}") }
+
+Transaction.destroy_all
+admin = User.find(1)
+t = Transaction.create(user: admin, category: "Food", description: "Lunching with birds", amount: 55)
+t = Transaction.create(user: admin, description: "Work in pub", amount: 15, expense: false)
+t = Transaction.create(user: admin, category: "Food", description: "Lunching with dogs", amount: 65)
+t = Transaction.create(user: admin, category: "Food", description: "Lunching alone", amount: 2)
+t = Transaction.create(user: admin, category: "Food", description: "Dinner with birds", amount: 55)
+t = Transaction.create(user: admin, description: "Washing toilet", amount: 12, expense: false)
+t = Transaction.create(user: admin, description: "Freelance web project", amount: 1, expense: false)
+t = Transaction.create(user: admin, category: "Food", description: "Dinner with dogs", amount: 35)
+t = Transaction.create(user: admin, description: "Garage sell", amount: 60, expense: false)
+t = Transaction.create(user: admin, category: "Personal", description: "Pair of shoes", amount: 45)
+t = Transaction.create(user: admin, category: "Transportation", description: "Oyster card top up", amount: 10)
+t = Transaction.create(user: admin, category: "Housing", description: "Rent", amount: 3000)
+t = Transaction.create(user: admin, category: "Housing", description: "Gas bill", amount: 65)
+t = Transaction.create(user: admin, category: "Debt", description: "Student loan", amount: 45)
+t = Transaction.create(user: admin, description: "Washing cars", amount: 9, expense: false)

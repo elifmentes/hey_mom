@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get '/budget', to: 'transactions#index', as: :budget
+  resources :transactions, except: :index
 
   resources :categories, only: [:index]
   resources :tasks, only: [:index]
