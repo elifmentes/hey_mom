@@ -1,25 +1,25 @@
-# require "open-uri"
-# require "JSON"
+require "open-uri"
+require "JSON"
 
-# UserTask.destroy_all
-# User.destroy_all
-# Step.destroy_all
-# Task.destroy_all
-# Category.destroy_all
+UserTask.destroy_all
+User.destroy_all
+Step.destroy_all
+Task.destroy_all
+Category.destroy_all
 
-# admin = User.create(email: "adminadmin@adminadmin.com",
-#         password: "password",
-#         username: "admin",
-#         gender: false,
-#         location: "Lisbon"
-#         )
+admin = User.create(email: "adminadmin@adminadmin.com",
+        password: "password",
+        username: "admin",
+        gender: false,
+        location: "Lisbon"
+        )
 
-# wallet = Category.create(name: "Wallet")
-# food = Category.create(name: "Food")
-# health = Category.create(name: "Health")
-# housekeeping = Category.create(name: "Housekeeping")
-# productivity = Category.create(name: "Productivity")
-# relationship = Category.create(name: "Relationship")
+wallet = Category.create(name: "Wallet")
+food = Category.create(name: "Food")
+health = Category.create(name: "Health")
+housekeeping = Category.create(name: "Housekeeping")
+productivity = Category.create(name: "Productivity")
+relationship = Category.create(name: "Relationship")
 
 base_url = "https://www.wikihow.com/api.php?format=json&action=app&subcmd=article&name="
 wallet_urls = ["https://www.wikihow.com/api.php?format=json&action=app&subcmd=article&name=Make-Money-as-a-College-Student", "https://www.wikihow.com/api.php?format=json&action=app&subcmd=article&name=Save-Money-As-a-Student"]
@@ -211,12 +211,12 @@ health_articles = [
                     "Complete-a-Wellness-Challenge"
                   ]
 
-# wallet_urls.each { |url| url_multi(wallet, url) }
-# food_urls.each { |url| url_multi(food, url) }
-# health_articles.each { |article| url_single(health, "#{base_url}#{article}") }
-# housekeeping_articles.each { |article| url_single(housekeeping, "#{base_url}#{article}") }
-# productivity_articles.each { |article| url_single(productivity, "#{base_url}#{article}") }
-# relationship_articles.each { |article| url_single(relationship, "#{base_url}#{article}") }
+wallet_urls.each { |url| url_multi(wallet, url) }
+food_urls.each { |url| url_multi(food, url) }
+health_articles.each { |article| url_single(health, "#{base_url}#{article}") }
+housekeeping_articles.each { |article| url_single(housekeeping, "#{base_url}#{article}") }
+productivity_articles.each { |article| url_single(productivity, "#{base_url}#{article}") }
+relationship_articles.each { |article| url_single(relationship, "#{base_url}#{article}") }
 
 Transaction.destroy_all
 admin = User.find(1)
