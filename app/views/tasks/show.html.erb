@@ -1,5 +1,7 @@
+
 <div class="container-fluid" style='overflow:scroll;margin-bottom:10vh;'>
 <h2><%= @task.title %></h2>
+
   <i class="fas fa-chevron-left hidden" id="back-button"></i>
   <div>
     <div id="steps" data-steps="<%= @steps.reverse.to_json %>">
