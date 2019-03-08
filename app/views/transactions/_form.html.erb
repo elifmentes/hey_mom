@@ -1,9 +1,9 @@
 <%= simple_form_for(@transaction) do |f| %>
   <%= f.input :category, collection: %w[Housing Debt Transportation Food Personal Other] %>
-  <%= f.input :amount %>
   <%= f.input :description %>
-  <%= f.input :date, as: :string, input_html: { class: "datepicker" } %>
-  <%= f.input :expense, collection: [["Expense", true], ["Income", false]], as: :radio_buttons, fieldset: false  %>
+  <%= f.input :amount %>
+  <%= f.input :date, label: "Due date", as: :string, input_html: { class: "datepicker" } %>
+  <%= f.input :expense, collection: [["Expense", true], ["Income", false]], as: :boolean, label: false  %>
   <%= f.button :submit, class: 'btn-primary' %>
 <% end %>
 

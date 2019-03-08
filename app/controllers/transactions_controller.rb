@@ -10,7 +10,13 @@ class TransactionsController < ApplicationController
   end
 
   def create
-
+    @transaction = Transaction.new(transaction_params)
+    @transaction.user = current_user
+    if @transaction.save
+      redirect_to budget_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -34,5 +40,9 @@ class TransactionsController < ApplicationController
   def calculate_balance(expense)
     @subtransactions = @transactions.where('expense = ? AND created_at > ?', expense, 1.month.ago)
     return @subtransactions.map{ |t| t.amount }.sum
+  end
+
+  def transaction_params
+    params.require(:transaction).permit(:category, :description, :amount, :date, :expense)
   end
 end
