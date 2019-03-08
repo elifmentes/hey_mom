@@ -37,7 +37,6 @@ end
 def build_steps(step, task)
   content = step["html"] == "" ? step["summary"] : step["html"]
   step = Step.create(title: step["summary"], content: content, task: task)
-  p step
 end
 
 def url_multi(category, url)
@@ -219,7 +218,6 @@ productivity_articles.each { |article| url_single(productivity, "#{base_url}#{ar
 relationship_articles.each { |article| url_single(relationship, "#{base_url}#{article}") }
 
 Transaction.destroy_all
-admin = User.find(1)
 t = Transaction.create(user: admin, category: "Food", description: "Lunching with birds", amount: 55)
 t = Transaction.create(user: admin, description: "Work in pub", amount: 15, expense: false)
 t = Transaction.create(user: admin, category: "Food", description: "Lunching with dogs", amount: 65)
