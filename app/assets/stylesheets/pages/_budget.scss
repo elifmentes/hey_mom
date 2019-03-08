@@ -51,7 +51,9 @@
     justify-content: center;
     .fas {
       font-size: 3rem;
-      padding: 0;
+      padding: 6px 8px;
+      background-color: $red;
+      border-radius: 50%;
     }
   }
 }
