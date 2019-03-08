@@ -1,5 +1,3 @@
-require 'pry-byebug'
-
 class TasksController < ApplicationController
   before_action :set_tasks, only: [:show]
 
