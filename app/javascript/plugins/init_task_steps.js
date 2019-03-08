@@ -42,6 +42,10 @@ const initTaskSteps = () => {
     console.log(counter);
   });
 
+  const scroll = () => {
+    window.scrollTo(0,document.body.scrollHeight);
+  }
+
   const youtubeKey = videoContent.dataset.youtubeApiKey;
 
   const insertVideo = (data) => {
@@ -55,24 +59,33 @@ const initTaskSteps = () => {
       .then(insertVideo);
   };
 
+  console.log("content ", content);
+
+
   if(content.innerHTML == "") {
     noButton.addEventListener("click", (event) => {
+      videoContent.classList.add("hidden");
+      googleContent.classList.add("hidden");
       content.classList.add("speech-bubble");
       content.innerHTML = '';
       content.innerHTML = steps[counter].content;
+      console.log("content2 ", content);
+      scroll();
       if(content.innerHTML === steps[counter].content) {
         noButton.addEventListener("click", (event) => {
           googleContent.classList.add("hidden");
+          console.log("googleContent", googleContent);
           videoContent.classList.remove("hidden");
           videoContent.classList.add("speech-bubble");
-          window.scrollY =
           readYoutube();
-          if(videoContent.classList != "hidden"){
+          scroll();
+          if(videoContent.classList.contains("speech-bubble")){
             noButton.addEventListener("click", (event) => {
               googleContent.classList.remove("hidden");
               googleContent.classList.add("speech-bubble");
               googleContent.setAttribute("target", "_blank")
-              googleContent.setAttribute("href", "http://www.google.com")
+              googleContent.setAttribute("href", "http://www.google.com");
+              scroll();
             });
           }
         });
