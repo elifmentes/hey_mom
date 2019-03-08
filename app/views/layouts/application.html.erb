@@ -9,7 +9,8 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
     <%= render 'shared/navbar' %>

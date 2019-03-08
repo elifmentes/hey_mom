@@ -26,9 +26,7 @@
       <% @transactions[0..7].each do |t| %>
         <div class="balance-row">
           <div class="balance-row-icon">
-            <% if t.category.nil? %>
-              <i class="fas fa-search-dollar"></i>
-            <% elsif t.category == "Housing" %>
+            <% if t.category == "Housing" %>
               <i class="fas fa-home"></i>
             <% elsif t.category == "Debt" %>
               <i class="fas fa-money-bill-wave"></i>
@@ -38,6 +36,8 @@
               <i class="fas fa-utensils"></i>
             <% elsif t.category == "Personal" %>
               <i class="fas fa-user"></i>
+            <% else %>
+              <i class="fas fa-search-dollar"></i>
             <% end %>
           </div>
           <div class="balance-row-content">
