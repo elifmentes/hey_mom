@@ -2,7 +2,9 @@
   <h1 class="category-title"><%= @category.name %></h1>
   <ul class="category-tasks">
     <% @tasks.each do |task| %>
-      <li><%= link_to task.title, category_task_path(@category, task) %></li>
+      <%= link_to category_task_path(@category, task) do %>
+      <li><%= task.title %></li>
+      <% end %>
     <% end %>
   </ul>
 </div>

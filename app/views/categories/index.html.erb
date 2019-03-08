@@ -1,2 +1,10 @@
-<%= render 'shared/search'%>
+ <div id="weather-box" data-weather-api-key="<%= ENV['WEATHER_API_KEY'] %>">
+  <% if ((@weather['main']['temp'] - 273.15).to_i) < 10 %>
+      <div id="temperature">Hey it's a bit chilly make sure you take your coat!🥼<%=  (@weather['main']['temp'] - 273.15).to_i%> °C</div>
+    <% elsif  ((@weather['main']['temp'] - 273.15).to_i) > 10 %>
+      <div id="temperature">Hey it's <%=  (@weather['main']['temp'] - 273.15).to_i%> °C! Wear sun screen 😎</div>
+    <% end %>
+</div>
+
+
 <%= render 'shared/cards'%>
