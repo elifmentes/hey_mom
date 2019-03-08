@@ -5,14 +5,17 @@
           <h4>When in doubt, ask mom!</h4>
         </div>
 
-        <% if !user_signed_in? %>
-         <button class="btn btn-light" style="color:white">
+        <% if user_signed_in? %>
+          <button class="btn btn-light" style="color:white">
+           <%= link_to "Let's Start", categories_path %>
+          </button>
+        <% else %>
+          <button class="btn btn-light" style="color:white">
            <%= link_to "Log In", new_user_session_path %>
-         </button>
-         <div class="sign-up">
+          </button>
+          <div class="sign-up">
           <p>Don't have an account yet? <%= link_to "Sign Up", new_user_registration_path %></p>
          </div>
-        <% end %>
-
+      <% end %>
     </div>
 </div>
