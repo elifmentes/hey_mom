@@ -3,7 +3,7 @@
   <%= f.input :amount %>
   <%= f.input :description %>
   <%= f.input :date, as: :string, input_html: { class: "datepicker" } %>
-  <%= f.input :expense, collection: [["Expense", true], ["Income", false]], as: :radio_buttons %>
-  <button class="btn btn-primary"><%= f.submit %></button>
+  <%= f.input :expense, collection: [["Expense", true], ["Income", false]], as: :radio_buttons, fieldset: false  %>
+  <%= f.button :submit, class: 'btn-primary' %>
 <% end %>
 
