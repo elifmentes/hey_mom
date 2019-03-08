@@ -13,6 +13,3 @@ if(registrationsNew) {
   initPlaces();
 }
 
-
-
-
