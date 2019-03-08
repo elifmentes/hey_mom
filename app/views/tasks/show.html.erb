@@ -1,16 +1,21 @@
-<div class="container">
-  <h2><%= @task.title %></h2>
+
+<div class="container-fluid" style='overflow:scroll;margin-bottom:10vh;'>
+<h2><%= @task.title %></h2>
+
   <i class="fas fa-chevron-left hidden" id="back-button"></i>
   <div>
     <div id="steps" data-steps="<%= @steps.reverse.to_json %>">
       <p id="step-title" class="speech-bubble"><%= @steps.reverse.first.title %></p>
       <p id="step-content"></p>
-      <iframe id="video-content" class="hidden" src="https://www.youtube.com/embed/OADWPpXPjGg"  frameborder="0" allowfullscreen></iframe>
+      <iframe id="video-content" class="hidden" data-youtube-api-key="<%= ENV['YOUTUBE_KEY'] %>" src=""  frameborder="0" allowfullscreen></iframe>
+      <p><a id="google" class="hidden" href="">Maybe you want to google it dear.</a></p>
     </div>
-    <div class="buttons">
-      <button type="button" class="step-buttons" id="nope-button">Nope</button>
-      <button type="button" class="step-buttons" id="yes-button">Sure</button>
+    <div class="bottom">
+      <p class="speech-bubble">Did you understand sweety? 😘</p>
     </div>
   </div>
 </div>
-
+<div class="buttons fixed-bottom">
+            <button type="button" class="step-buttons" id="nope-button">Nope</button>
+            <button type="button" class="step-buttons" id="yes-button">Sure</button>
+</div>

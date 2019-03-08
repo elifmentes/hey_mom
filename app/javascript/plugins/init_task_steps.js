@@ -7,22 +7,14 @@ const initTaskSteps = () => {
   const noButton = document.getElementById('nope-button');
   let content = document.getElementById('step-content');
   let videoContent = document.getElementById('video-content');
-  // const stepContent = document.getElementById('step-content');
+  let googleContent = document.getElementById('google');
 
-  // yesButton.addEventListener('click', () => {
-  //   const activeStepId = step.dataset.stepId;
-  //   const nextStep = steps.filter(step => step.id > activeStepId)[0];
-  //   if (nextStep) {
-  //     stepElement.innerHTML = '';
-  //     step.dataset.stepId = nextStep.id;
-  //     stepElement.innerHTML = nextStep.title;
-  //   }
-  // });
-  console.log(steps);
   const size = steps.length - 1;
   let counter = 0;
 
   yesButton.addEventListener("click", (event) => {
+    videoContent.classList.add("hidden");
+    googleContent.classList.add("hidden");
     if (counter < size) {
       counter += 1;
       content.classList.remove("speech-bubble");
@@ -38,6 +30,8 @@ const initTaskSteps = () => {
 
   back.addEventListener("click", (event) => {
     counter -= 1;
+    googleContent.classList.add("hidden");
+    videoContent.classList.add("hidden");
     content.classList.remove("speech-bubble");
     content.innerHTML = '';
     step.innerHTML = steps[counter].title;
@@ -48,6 +42,19 @@ const initTaskSteps = () => {
     console.log(counter);
   });
 
+  const youtubeKey = videoContent.dataset.youtubeApiKey;
+
+  const insertVideo = (data) => {
+    const result = data.items[0].id["videoId"];
+    videoContent.setAttribute("src", `https://www.youtube.com/embed/${result}`)
+  }
+
+  const readYoutube = () => {
+    fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${youtubeKey}&q=${steps[counter].title}`)
+      .then(response => response.json())
+      .then(insertVideo);
+  };
+
   if(content.innerHTML == "") {
     noButton.addEventListener("click", (event) => {
       content.classList.add("speech-bubble");
@@ -55,8 +62,19 @@ const initTaskSteps = () => {
       content.innerHTML = steps[counter].content;
       if(content.innerHTML === steps[counter].content) {
         noButton.addEventListener("click", (event) => {
-          videoContent.classList.remove('hidden');
+          googleContent.classList.add("hidden");
+          videoContent.classList.remove("hidden");
           videoContent.classList.add("speech-bubble");
+          window.scrollY =
+          readYoutube();
+          if(videoContent.classList != "hidden"){
+            noButton.addEventListener("click", (event) => {
+              googleContent.classList.remove("hidden");
+              googleContent.classList.add("speech-bubble");
+              googleContent.setAttribute("target", "_blank")
+              googleContent.setAttribute("href", "http://www.google.com")
+            });
+          }
         });
       }
     });

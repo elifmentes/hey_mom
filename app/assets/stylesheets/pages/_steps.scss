@@ -1,11 +1,23 @@
-.buttons {
-  display: flex;
-  justify-content: space-around;
-  position: fixed;
-  bottom: 15px;
-  right: 15px;
-  left: 15px;
+html,body{
+  height:100%
 }
+
+.buttons {
+  position: fixed;
+  height: 70px;
+  padding: 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: 5px;
+  padding-left: 5px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(120deg, #FF9393, #FFC279) fixed;
+}
+
 
 .step-buttons {
   height: 50px;
@@ -40,13 +52,14 @@ cite {
   position: relative;
   padding-top: 5px;
   padding-bottom: 5px;
+  max-width: 100%;
 }
 
 .speech-bubble:after {
   content: '';
   position: absolute;
-  left: 0;
-  top: 50%;
+  left: 5px;
+  bottom: 15%;
   width: 0;
   height: 0;
   border: 20px solid transparent;
@@ -61,6 +74,13 @@ cite {
 }
 
 #step-content {
-  font-size: 10px;
+  font-size: 12px;
+}
+#google {
+  font-size: 12px;
+  text-decoration: none;
 }
 
+.bottom p {
+  font-size: 15px;
+}
