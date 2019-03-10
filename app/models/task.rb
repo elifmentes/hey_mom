@@ -1,5 +1,7 @@
 class Task < ApplicationRecord
 
+ include PgSearch
+  multisearchable against: [:title]
   belongs_to :category
   has_many :steps
 
