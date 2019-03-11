@@ -1,22 +1,70 @@
-<div class="navbar-wagon">
-
+ <div class="navbar-wagon-item hidden-md hidden-lg">
   <div class="dropdown">
-    <i class="fa fa-bars dropdown-toggle navbar-icon" data-toggle="dropdown"></i>
-    <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-      <h5 class="dropdown-title navbar-wagon-item navbar-wagon-link"><%= link_to "Hey Mom", root_path %></h5>
-      <li><%= render 'shared/search' %></li>
-      <li><%= link_to "All", categories_path, class: "navbar-wagon-link" %></li>
-      <li><%= link_to "About", "#", class: "navbar-wagon-link" %></li>
-      <% Category.all.each do |category| %>
-        <li><%= link_to category.name, category_path(category), class: "navbar-wagon-link" %></li>
-      <% end %>
-      <li><%= link_to "Budget", budget_path, class: "navbar-wagon-link" %></li>
-      <li>
+      <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <h5 class="dropdown-title">
+          <%= link_to "Hey Mom", root_path %>
+        </h5>
+        <li class="link-icon">
+          <%= render 'shared/search' %>
+        </li>
+        <li class="link-icon">
+          <i class="fas fa-globe"><%= link_to "All", categories_path%></i>
+        </li>
+        <li class="link-icon">
+          <i class="fas fa-female">
+            <%= link_to "About", "#" %>
+          </i>
+        </li>
+        <% Category.all.each do |category|%>
+          <%= link_to category_path(category) do %>
+            <% if category.name == "Wallet" %>
+              <div class="link-icon">
+                <li>
+                  <i class="fas fa-hand-holding-usd"></i>
+                  <%= category.name %>
+                </li>
+              </div>
+              <div class="link-icon">
+                <% elsif category.name == "Food" %>
+                <i class="fas fa-utensils"></i>
+                <%= category.name %>
+              </div>
+              <div class="link-icon">
+                <% elsif category.name == "Health" %>
+                <i class="fas fa-medkit"></i>
+                <%= category.name %>
+              </div>
+              <div class="link-icon">
+                <% elsif category.name == "Housekeeping" %>
+                <i class="fas fa-broom"></i>
+                <%= category.name %>
+              </div>
+              <div class="link-icon">
+                <% elsif category.name == "Productivity" %>
+                <i class="fas fa-laptop"></i>
+                <%= category.name %>
+              </div>
+              <div class="link-icon">
+                <% else %>
+                <i class="fas fa-heart"></i>
+                <%= category.name %>
+              </div>
+            <% end %>
+          <% end %>
+        <%  end %>
+        <li class="link-icon">
+          <i class="fas fa-money-check">
+            <%= link_to "Budget", budget_path%>
+          </i>
+        </li>
         <%= link_to destroy_user_session_path, method: :delete do %>
-          <%= t(".sign_out", default: "Log out") %>
-        <% end %>
-      </li>
-    </ul>
-    </div>
+          <li class="link-icon">
+            <i class="fas fa-sign-out-alt">
+              <%= t(".sign_out", default: "Log out") %>
+            </i>
+          </li>
+         <% end %>
+      </ul>
+  </div>
 </div>
-
