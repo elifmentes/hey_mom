@@ -1,29 +1,22 @@
 <div class="navbar-wagon">
 
-  <!-- Right Navigation -->
-  <div class="navbar-wagon-right">
-
-      <!-- Avatar with dropdown menu -->
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <i class="fa fa-bars dropdown-toggle navbar-icon" data-toggle="dropdown"></i>
-            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-              <li class="dropdown-title navbar-wagon-item navbar-wagon-link"><%= link_to "HEY MOM", root_path %></li>
-               <li><%= render 'shared/search' %></li>
-              <li><%= link_to "All", categories_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
-              <li><%= link_to "About", "#", class: "navbar-wagon-item navbar-wagon-link" %></li>
-              <% Category.all.each do |category| %>
-                <li><%= link_to category.name, category_path(category), class: "navbar-wagon-item navbar-wagon-link" %></li>
-              <% end %>
-              <li><%= link_to "Budget", budget_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                  <%= t(".sign_out", default: "Log out") %>
-                <% end %>
-              </li>
-            </ul>
-        </div>
-      </div>
-  </div>
+  <div class="dropdown">
+    <i class="fa fa-bars dropdown-toggle navbar-icon" data-toggle="dropdown"></i>
+    <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+      <h5 class="dropdown-title navbar-wagon-item navbar-wagon-link"><%= link_to "Hey Mom", root_path %></h5>
+      <li><%= render 'shared/search' %></li>
+      <li><%= link_to "All", categories_path, class: "navbar-wagon-link" %></li>
+      <li><%= link_to "About", "#", class: "navbar-wagon-link" %></li>
+      <% Category.all.each do |category| %>
+        <li><%= link_to category.name, category_path(category), class: "navbar-wagon-link" %></li>
+      <% end %>
+      <li><%= link_to "Budget", budget_path, class: "navbar-wagon-link" %></li>
+      <li>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <%= t(".sign_out", default: "Log out") %>
+        <% end %>
+      </li>
+    </ul>
+    </div>
 </div>
 
