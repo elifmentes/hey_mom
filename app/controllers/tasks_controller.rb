@@ -2,11 +2,7 @@ class TasksController < ApplicationController
   before_action :set_tasks, only: [:show]
 
   def index
-    if params[:query].present?
-      @tasks = Task.search(params[:query])
-    else
-      @tasks = Task.all
-    end
+    @tasks = Task.all
   end
 
   def show
