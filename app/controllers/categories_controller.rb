@@ -6,7 +6,12 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
-    @tasks = Task.where(category: @category)
+    if params[:query].present?
+      @steps = Step.global_search(params[:query])
+      @tasks = Task.where(steps: @steps)
+    else
+      @category = Category.find(params[:id])
+      @tasks = Task.where(category: @category)
+    end
   end
 end
