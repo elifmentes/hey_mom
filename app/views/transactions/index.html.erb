@@ -51,14 +51,15 @@
           <% end %>
             <%= t.amount %>
           </div>
-
         </div>
       <% end %>
       <div class="balance-new">
-        <%= link_to new_transaction_path do %>
-          <i class="fas fa-plus"></i>
-        <% end %>
+        <i class="fas fa-plus" id="transaction-new"></i>
       </div>
+      <div class="transaction-form hidden">
+        <%= render "form" %>
+      </div>
+
     </div>
   </div>
 </div>

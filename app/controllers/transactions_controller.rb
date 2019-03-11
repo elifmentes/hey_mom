@@ -3,9 +3,6 @@ class TransactionsController < ApplicationController
   def index
     @monthly_income = calculate_balance(false)
     @monthly_expense = calculate_balance(true)
-  end
-
-  def new
     @transaction = Transaction.new
   end
 
@@ -17,18 +14,6 @@ class TransactionsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def edit
-
-  end
-
-  def update
-
-  end
-
-  def delete
-
   end
 
   private
