@@ -18,6 +18,10 @@ html,body{
   background: linear-gradient(120deg, #FF9393, #FFC279) fixed;
 }
 
+#back-button {
+  color: white;
+  font-size: 30px;
+}
 
 .step-buttons {
   height: 50px;
@@ -53,6 +57,36 @@ cite {
   padding-top: 5px;
   padding-bottom: 5px;
   max-width: 100%;
+}
+
+.count-down p {
+  position: absolute;
+  top: 25px;
+  left: 32px;
+}
+
+.time-input {
+  color: darkgrey;
+  width: 30px;
+}
+
+#minute {
+  position: absolute;
+  top: 50px;
+  left: 32px;
+}
+
+#second {
+  position: absolute;
+  top: 50px;
+  left: 65px;
+}
+
+#time-button {
+  position: absolute;
+  color: white;
+  top: 57px;
+  left: 100px;
 }
 
 .speech-bubble:after {
