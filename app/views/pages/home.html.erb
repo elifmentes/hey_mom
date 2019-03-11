@@ -6,11 +6,11 @@
         </div>
 
         <% if user_signed_in? %>
-          <button class="btn btn-light" style="color:white">
+          <button class="btn btn-light btn-home" style="color:white">
            <%= link_to "Let's Start", categories_path %>
           </button>
         <% else %>
-          <button class="btn btn-light" style="color:white">
+          <button class="btn btn-light btn-home" style="color:white">
            <%= link_to "Log In", new_user_session_path %>
           </button>
           <div class="sign-up">
