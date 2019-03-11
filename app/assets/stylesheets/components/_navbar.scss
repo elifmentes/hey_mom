@@ -1,28 +1,7 @@
-/* Main navbar */
-.navbar-wagon {
-  transition: all 0.3s ease;
-  height: 40px;
-  padding: 0px 0px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.dropdown-menu-right {
-  right: 100px;
-  left: auto;
-}
-.dropdown-title {
-  a {
-    font-size: 50px;
-    color: white;
-    font-weight: 800;
-    line-height: 103px;
-    letter-spacing: -0.07em;
-    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.25);
-    text-align: center;
-    padding: 10px 50px;
-  }
+/* Basic navbar item */
+.navbar-wagon-item {
+  cursor: pointer;
+  padding: 0 20px;
 }
 /* Dropdown menu */
 .navbar-wagon-dropdown-menu {
@@ -30,7 +9,7 @@
   margin-top: 0px;
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
-  width: 337px;
+  width: 360px;
   margin-left: 0px;
   position: fixed;
   right: 0px;
@@ -38,18 +17,46 @@
   height: 100%;
 }
 
-.navbar-wagon-dropdown-menu li > a {
-  transition: color 0.3s ease;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: lighter !important;
-  color: #514538 !important;
-  font-size: 15px !important;
-  line-height: 22px !important;
-  padding: 10px 20px;
-}
-.navbar-wagon-dropdown-menu li > a:hover {
-  background: transparent !important;
-  color: white !important;
-  background-color: rgba(255,255,255,0.5)
+.dropdown-toggle{
+  margin-left: 296px;
 }
 
+// changing dropdown menu symbol to white
+
+i.fas.fa-bars.dropdown-toggle {
+  color: white;
+}
+
+//link_tos text-decoration
+
+.dropdown {
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  // HEY MOM title
+  .dropdown-title {
+    a {
+      font-size: 50px;
+      color: white;
+      font-weight: 800;
+      line-height: 103px;
+      letter-spacing: -0.07em;
+      text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.25);
+      text-align: center;
+      padding: 10px 50px;
+      border-bottom: 0.5px solid white;
+    }
+  }
+}
+
+// div of every link
+.link-icon {
+  display: flex;
+  height: 60px;
+  a {
+    text-decoration: none;
+    color: black;
+    font-family: Montserrat;
+  }
+}
