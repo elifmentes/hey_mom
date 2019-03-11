@@ -1,8 +1,15 @@
 
 <div class="container-fluid" style='overflow:scroll;margin-bottom:10vh;'>
-<h2><%= @task.title %></h2>
-
-  <i class="fas fa-chevron-left hidden" id="back-button"></i>
+  <div class="count-down">
+    <p>Wanna set a timer?</p>
+    <i class="far fa-clock" id="time-button"></i>
+    <input type="text" class="time-input" id="minute" placeholder="05">
+    <input type="text" class="time-input" id="second" placeholder="27">
+    <p id="timer"></p>
+    <p id=timer-started></p>
+  </div>
+  <h2><%= @task.title %></h2>
+  <i class="fas fa-chevron-left fa-xs hidden" id="back-button"></i>
   <div id="steps-container">
     <div id="steps" data-steps="<%= @steps.reverse.to_json %>">
       <p id="step-title" class="speech-bubble"><%= @steps.reverse.first.title %></p>
