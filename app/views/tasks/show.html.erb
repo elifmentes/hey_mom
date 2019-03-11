@@ -3,7 +3,7 @@
 <h2><%= @task.title %></h2>
 
   <i class="fas fa-chevron-left hidden" id="back-button"></i>
-  <div>
+  <div id="steps-container">
     <div id="steps" data-steps="<%= @steps.reverse.to_json %>">
       <p id="step-title" class="speech-bubble"><%= @steps.reverse.first.title %></p>
       <p id="step-content"></p>
@@ -11,7 +11,7 @@
       <p><a id="google" class="hidden" href="">Maybe you want to google it dear.</a></p>
     </div>
     <div class="bottom">
-      <p class="speech-bubble">Did you understand sweety? 😘</p>
+      <p class="speech-bubble hidden" id="mom-final"></p>
     </div>
   </div>
 </div>
