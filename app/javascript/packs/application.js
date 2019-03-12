@@ -6,7 +6,7 @@ import { initTaskSteps } from '../plugins/init_task_steps';
 
 import { byeWeather } from '../plugins/init_weather';
 import { reveal } from '../plugins/init_search';
-import '../components/transaction_form';
+// import '../components/transaction_form';
 import "../plugins/flatpickr";
 const tasksShow = document.querySelector(".tasks.show")
 
