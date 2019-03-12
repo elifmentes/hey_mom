@@ -4,9 +4,11 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "bootstrap": "3.4.0",
+    "countdown-js": "^1.0.2",
     "flatpickr": "^4.5.7",
     "jquery": "^3.3.1",
-    "places.js": "^1.16.1"
+    "places.js": "^1.16.1",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"

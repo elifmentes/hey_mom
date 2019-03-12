@@ -3,7 +3,7 @@ import "../plugins/flatpickr"
 
 import { initPlaces } from '../plugins/init_places';
 import { initTaskSteps } from '../plugins/init_task_steps';
-import { initTimer } from '../plugins/init_timer'
+
 import { byeWeather } from '../plugins/init_weather';
 import { reveal } from '../plugins/init_search';
 import '../components/transaction_form';
@@ -12,10 +12,6 @@ const tasksShow = document.querySelector(".tasks.show")
 
 if(tasksShow) {
   initTaskSteps();
-}
-
-if(tasksShow) {
-  initTimer();
 }
 
 const registrationsNew = document.querySelector(".registrations.new")
