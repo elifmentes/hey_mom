@@ -52,11 +52,25 @@ i.fas.fa-bars.dropdown-toggle {
 
 // div of every link
 .link-icon {
-  display: flex;
   height: 60px;
+  display: flex;
   a {
     text-decoration: none;
     color: black;
-    font-family: Montserrat;
+    font-weight: normal;
+    font-size: 20px;
+  }
+
+  .menu-name {
+    padding: 12px 0px;
+  }
+
+  i {
+    flex: 0 0 80px;
+    padding: 0 15px;
+    font-size: 40px;
+  }
+  .icon-smaller{
+    font-size: 35px;
   }
 }
