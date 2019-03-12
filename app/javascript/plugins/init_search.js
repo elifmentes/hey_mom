@@ -1,17 +1,21 @@
-const glass = document.getElementById("glass")
-const form = document.getElementById("form-search")
+const submit = document.getElementById('search_submit');
+const input = document.getElementById('search');
 
-
-const hidden = () => {
-  form.style.visibility = "hidden";
-};
 
 const reveal = () => {
-  hidden();
-  glass.addEventListener("click", (event) => {
-    form.style.visibility = "visible"
+  // set initial state:
+  input.focused = false;
+
+  submit.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (input.focused) {
+      input.blur();
+      input.focused = false;
+    } else {
+      input.focus();
+      input.focused = true;
+    }
   });
 };
 
-
-export { reveal };
+export { reveal }
