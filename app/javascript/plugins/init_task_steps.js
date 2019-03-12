@@ -1,3 +1,5 @@
+import { initTimer } from './init_timer'
+
 const initTaskSteps = () => {
   const stepElement = document.getElementById('steps')
   const steps = JSON.parse(stepElement.dataset.steps);
@@ -95,6 +97,11 @@ const initTaskSteps = () => {
       scroll();
       noCounter += 1;
     }
+  });
+
+  const timeButton = document.getElementById('time-button');
+  timeButton.addEventListener('click', (event) => {
+    initTimer();
   });
 
   yesButton.addEventListener("click", (event) => {
