@@ -54,11 +54,13 @@
         </div>
       <% end %>
       <div class="balance-new">
-        <i class="fas fa-plus" id="transaction-new"></i>
+        <%= link_to new_transaction_path do  %>
+          <i class="fas fa-plus" id="transaction-new"></i>
+        <% end %>
       </div>
-      <div class="transaction-form hidden">
-        <%= render "form", transaction: @transaction %>
-      </div>
+      <!-- <div class="transaction-form hidden">
+        <%#= render "form", transaction: @transaction %>
+      </div> -->
 
     </div>
   </div>
