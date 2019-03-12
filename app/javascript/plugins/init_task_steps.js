@@ -8,6 +8,7 @@ const initTaskSteps = () => {
   const yesButton = document.getElementById('yes-button');
   const back = document.getElementById('back-button');
   const noButton = document.getElementById('nope-button');
+  const timeButton = document.getElementById('time-button');
 
   const content = document.getElementById('step-content');
   const videoContent = document.getElementById('video-content');
@@ -99,7 +100,6 @@ const initTaskSteps = () => {
     }
   });
 
-  const timeButton = document.getElementById('time-button');
   timeButton.addEventListener('click', (event) => {
     initTimer();
   });
