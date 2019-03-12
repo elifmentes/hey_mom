@@ -9,7 +9,6 @@ const reveal = () => {
   submit.addEventListener('click', function(e) {
     e.preventDefault();
     if (input.focused) {
-      console.log("hey");
       input.blur();
       input.focused = false;
     } else {
@@ -19,4 +18,4 @@ const reveal = () => {
   });
 };
 
-export { reveal }
+export { reveal };
