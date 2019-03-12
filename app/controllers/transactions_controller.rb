@@ -3,32 +3,25 @@ class TransactionsController < ApplicationController
   def index
     @monthly_income = calculate_balance(false)
     @monthly_expense = calculate_balance(true)
-  end
-
-  def new
     @transaction = Transaction.new
   end
 
   def create
+    @monthly_income = calculate_balance(false)
+    @monthly_expense = calculate_balance(true)
     @transaction = Transaction.new(transaction_params)
     @transaction.user = current_user
+
     if @transaction.save
-      redirect_to budget_path
+      respond_to do |format|
+        format.html { redirect_to transactions_path }
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render :index }
+        format.js
+      end
     end
-  end
-
-  def edit
-
-  end
-
-  def update
-
-  end
-
-  def delete
-
   end
 
   private

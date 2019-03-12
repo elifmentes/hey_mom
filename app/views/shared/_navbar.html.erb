@@ -1,70 +1,61 @@
  <div class="navbar-wagon-item hidden-md hidden-lg">
   <div class="dropdown">
-      <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <h5 class="dropdown-title">
-          <%= link_to "Hey Mom", root_path %>
-        </h5>
-        <li class="link-icon">
-          <%= render 'shared/search' %>
-        </li>
-        <li class="link-icon">
-          <i class="fas fa-globe"><%= link_to "All", categories_path%></i>
-        </li>
-        <li class="link-icon">
-          <i class="fas fa-female">
-            <%= link_to "About", "#" %>
-          </i>
-        </li>
-        <% Category.all.each do |category|%>
-          <%= link_to category_path(category) do %>
-            <% if category.name == "Wallet" %>
-              <div class="link-icon">
-                <li>
-                  <i class="fas fa-hand-holding-usd"></i>
-                  <%= category.name %>
-                </li>
-              </div>
-              <div class="link-icon">
-                <% elsif category.name == "Food" %>
+    <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
+    <div class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+      <h5 class="dropdown-title">
+        <%= link_to "Hey Mom", root_path %>
+      </h5>
+      <div class="link-icon">
+        <%= render 'shared/search' %>
+      </div>
+      <%= link_to categories_path do %>
+        <div class="link-icon">
+          <i class="fas fa-globe"></i>
+          <div class="menu-name">
+            All
+          </div>
+        </div>
+      <% end %>
+      <% Category.all.each do |category|%>
+        <%= link_to category_path(category) do %>
+          <div class="link-icon">
+              <% if category.name == "Wallet" %>
+                <i class="fas fa-hand-holding-usd"></i>
+              <% elsif category.name == "Food" %>
                 <i class="fas fa-utensils"></i>
-                <%= category.name %>
-              </div>
-              <div class="link-icon">
-                <% elsif category.name == "Health" %>
+              <% elsif category.name == "Health" %>
                 <i class="fas fa-medkit"></i>
-                <%= category.name %>
-              </div>
-              <div class="link-icon">
-                <% elsif category.name == "Housekeeping" %>
-                <i class="fas fa-broom"></i>
-                <%= category.name %>
-              </div>
-              <div class="link-icon">
-                <% elsif category.name == "Productivity" %>
-                <i class="fas fa-laptop"></i>
-                <%= category.name %>
-              </div>
-              <div class="link-icon">
-                <% else %>
-                <i class="fas fa-heart"></i>
-                <%= category.name %>
-              </div>
-            <% end %>
-          <% end %>
-        <%  end %>
-        <li class="link-icon">
-          <i class="fas fa-money-check">
-            <%= link_to "Budget", budget_path%>
-          </i>
-        </li>
-        <%= link_to destroy_user_session_path, method: :delete do %>
-          <li class="link-icon">
-            <i class="fas fa-sign-out-alt">
-              <%= t(".sign_out", default: "Log out") %>
+              <% elsif category.name == "Housekeeping" %>
+                <i class="fas fa-broom icon-smaller"></i>
+              <% elsif category.name == "Productivity" %>
+                <i class="fas fa-laptop icon-smaller"></i>
+              <% else %>
+                <i class="fas fa-heart icon-smaller"></i>
+              <% end %>
+            <div class="menu-name">
+              <%= category.name %>
+            </div>
+          </div>
+        <% end %>
+      <%  end %>
+      <%= link_to transactions_path do%>
+        <div class="link-icon">
+            <i class="fas fa-money-check icon-smaller">
             </i>
-          </li>
-         <% end %>
-      </ul>
+            <div class="menu-name">
+              Budget
+            </div>
+        </div>
+      <% end %>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+      <div class="link-icon">
+        <i class="fas fa-sign-out-alt">
+        </i>
+        <div class="menu-name">
+          <%= t(".sign_out", default: "Log out") %>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>
 </div>
