@@ -1,24 +1,32 @@
 
 <div class="container-fluid" style='overflow:scroll;margin-bottom:10vh;'>
+  <div class="top">
+    <%= link_to category_path(@category) do %>
+      <%= image_tag "back-arrow.png" %>
+    <% end %>
+  </div>
   <div class="count-down">
     <p>Wanna set a timer?</p>
-    <i class="far fa-clock" id="time-button"></i>
-    <input type="text" class="time-input" id="minute" value="" default="">
-    <input type="text" class="time-input" id="second" value="" default="">
-  </div></br>
-  <p id="timer"></p>
-  <p id=timer-started></p>
-  <h4><%= @task.title %></h4>
-  <i class="fas fa-chevron-left fa-xs hidden" id="back-button"></i>
-  <div id="steps-container">
-    <div id="steps" data-steps="<%= @steps.reverse.to_json %>">
-      <p id="step-title" class="speech-bubble"><%= @steps.reverse.first.title %></p>
-      <p id="step-content"></p>
-      <iframe id="video-content" class="hidden" data-youtube-api-key="<%= ENV['YOUTUBE_KEY'] %>" src=""  frameborder="0" allowfullscreen></iframe>
-      <p><a id="google" class="hidden" href="">Maybe you want to google it dear.</a></p>
+    <div class="timing">
+      <input type="text" class="time-input" id="minute" value="" default="">
+      <input type="text" class="time-input" id="second" value="" default="">
+      <i class="far fa-clock" id="time-button"></i>
+      <p id="timer"></p>
     </div>
-    <div class="bottom">
-      <p class="speech-bubble hidden" id="mom-final"></p>
+  </div>
+  <div class="content">
+    <h4><%= @task.title %></h4>
+    <i class="fas fa-chevron-left fa-xs hidden" id="back-button"></i>
+    <div id="steps-container">
+      <div id="steps" data-steps="<%= @steps.reverse.to_json %>">
+        <p id="step-title" class="speech-bubble"><%= @steps.reverse.first.title %></p>
+        <p id="step-content"></p>
+        <iframe id="video-content" class="hidden" data-youtube-api-key="<%= ENV['YOUTUBE_KEY'] %>" src=""  frameborder="0" allowfullscreen></iframe>
+        <p><a id="google" class="hidden" href="">Maybe you want to google it dear.</a></p>
+      </div>
+      <div class="bottom">
+        <p class="speech-bubble hidden" id="mom-final"></p>
+      </div>
     </div>
   </div>
 </div>

@@ -18,6 +18,11 @@ html,body{
   background: linear-gradient(120deg, #FF9393, #FFC279) fixed;
 }
 
+.top {
+  position: absolute;
+  top: 30px;
+}
+
 #back-button {
   color: white;
   font-size: 30px;
@@ -39,8 +44,41 @@ cite {
   display: none;
 }
 
-.speech {
-  // margin-bottom: 10px;
+.count-down {
+  position: absolute;
+  top: 60px;
+  left: 30px;
+  width: 60%;
+  margin-bottom: 15px;
+}
+
+.count-down p {
+  margin-bottom: 0.5px;
+}
+
+.timing {
+  display: flex;
+  align-items: center;
+}
+
+.time-input {
+  color: darkgrey;
+  width: 30px;
+  margin-right: 5px;
+  text-align: center;
+}
+
+#time-button {
+  color: white;
+}
+
+#timer {
+  color: white;
+  font-size: 20px;
+  margin-left: 5px;
+}
+.content {
+  margin-top: 60px;
 }
 
 .speech-bubble {
@@ -59,36 +97,6 @@ cite {
   max-width: 100%;
 }
 
-.count-down p {
-  position: absolute;
-  top: 25px;
-  left: 32px;
-}
-
-.time-input {
-  color: darkgrey;
-  width: 30px;
-}
-
-#minute {
-  position: absolute;
-  top: 50px;
-  left: 32px;
-}
-
-#second {
-  position: absolute;
-  top: 50px;
-  left: 65px;
-}
-
-#time-button {
-  position: absolute;
-  color: white;
-  top: 57px;
-  left: 100px;
-}
-
 .speech-bubble:after {
   content: '';
   position: absolute;
@@ -103,8 +111,13 @@ cite {
   margin-top: -10px;
   margin-left: -20px;
 }
+
+.content h4 {
+  margin-top: 15px;
+}
+
 #step-title {
-  font-size: 15px;
+  font-size: 12px;
 }
 
 #step-content {
@@ -115,6 +128,6 @@ cite {
   text-decoration: none;
 }
 
-.bottom p {
-  font-size: 15px;
-}
+// .bottom p {
+//   font-size: 15px;
+// }
