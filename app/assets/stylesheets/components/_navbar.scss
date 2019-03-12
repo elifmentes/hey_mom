@@ -1,97 +1,76 @@
-/* Main navbar */
-.navbar-wagon {
-  // box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  // background: #ff7c7f;
-  transition: all 0.3s ease;
-  height: 40px;
-  padding: 0px 0px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-/* User Avatar */
-// .navbar-wagon .avatar {
-//   height: 35px;
-//   width: 35px;
-//   border-radius: 50%;
-// }
-
-.dropdown-menu-right {
-  right: 0px;
-  left: auto;
-}
-
-/* Right section */
-// .navbar-wagon-right {
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-// }
-
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
   padding: 0 20px;
 }
-
-.navbar-wagon-item.active {
-  background-color: rgba(255,255,255,0.5)
-}
-
-/* Navbar link */
-.navbar-wagon-link {
-  color: white;
-  font-size: 14px;
-}
-.navbar-wagon-link:hover {
-  color: #da552f;
-  text-decoration: none;
-}
-
 /* Dropdown menu */
 .navbar-wagon-dropdown-menu {
-  background: #9eb0c1;
+  background: #c7cccc;
   margin-top: 0px;
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
-  width: 337px;
+  width: 360px;
   margin-left: 0px;
   position: fixed;
   right: 0px;
   top: 0px;
   height: 100%;
 }
-.dropdown-title {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
-  font-size: 18px;
+
+.dropdown-toggle{
+  margin-left: 296px;
 }
 
-.navbar-wagon-dropdown-menu li > a {
-  transition: color 0.3s ease;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: lighter !important;
-  color: white !important;
-  font-size: 15px !important;
-  line-height: 22px !important;
-  padding: 10px 20px;
-  text-shadow: 2px 2px 1px #808080;
+// changing dropdown menu symbol to white
+
+i.fas.fa-bars.dropdown-toggle {
+  color: white;
 }
-.navbar-wagon-dropdown-menu li > a:hover {
-  background: transparent !important;
-  color: white !important;
-  background-color: rgba(255,255,255,0.5)
+
+//link_tos text-decoration
+
+.dropdown {
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  // HEY MOM title
+  .dropdown-title {
+    a {
+      font-size: 50px;
+      color: white;
+      font-weight: 800;
+      line-height: 103px;
+      letter-spacing: -0.07em;
+      text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.25);
+      text-align: center;
+      padding: 10px 50px;
+      border-bottom: 0.5px solid white;
+    }
+  }
 }
-// .navbar-wagon-dropdown-menu:before {
-//   content: ' ';
-//   height: 10px;
-//   width: 10px;
-//   position: absolute;
-//   left: 10px;
-//   top: -6px;
-//   background-color: white;
-//   transform: rotate(45deg);
-//   border-left: 1px solid #E6E6E6;
-//   border-top: 1px solid #E6E6E6;
-// }
+
+// div of every link
+.link-icon {
+  height: 60px;
+  display: flex;
+  a {
+    text-decoration: none;
+    color: black;
+    font-weight: normal;
+    font-size: 20px;
+  }
+
+  .menu-name {
+    padding: 12px 0px;
+  }
+
+  i {
+    flex: 0 0 80px;
+    padding: 0 15px;
+    font-size: 40px;
+  }
+  .icon-smaller{
+    font-size: 35px;
+  }
+}

@@ -1,21 +1,9 @@
 .search-bar {
   display: flex;
   transition: width 2s linear 1s;
-  margin-left: 13px;
-}
-
-.fa-search {
-  color: #4f5055;
-  font-size: 29px;
-  padding-top: 7px;
-  padding-left: 6px;
-  padding-right: 6px;
-  padding-bottom: -2px;
-  height: 40px;
+  padding: 0px;
 }
 
 .form-control {
-  margin-top: -15px;
-  margin-left: -8px;
   border-radius: 20px;
 }
