@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get '/tasks', to: 'categories#show'
+  get '/map', to: 'pages#map', as: :map
   resources :transactions
 
   resources :categories, only: [:index]
