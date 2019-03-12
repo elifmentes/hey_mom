@@ -1,0 +1,11 @@
+function refreshForm(innerHTML) {
+  const form = document.getElementById('new_transaction');
+  form.innerHTML = innerHTML;
+};
+
+<% if @transaction.errors.any? %>
+  refreshForm('<%= j render "transactions/form", transaction: @transaction  %>');
+<% else %>
+  // togglePage();
+  refreshForm('<%= j render "transactions/form", transaction: Transaction.new  %>');
+<% end %>

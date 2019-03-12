@@ -1,4 +1,4 @@
-<%= simple_form_for(@transaction) do |f| %>
+<%= simple_form_for(transaction, remote: true) do |f| %>
   <%= f.input :category, collection: %w[Housing Debt Transportation Food Personal Other] %>
   <%= f.input :description %>
   <%= f.input :amount %>

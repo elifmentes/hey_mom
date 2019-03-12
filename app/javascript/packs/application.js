@@ -1,10 +1,11 @@
 import "bootstrap";
+
 import { initPlaces } from '../plugins/init_places';
 import { initTaskSteps } from '../plugins/init_task_steps';
 import { byeWeather } from '../plugins/init_weather';
+import { reveal } from '../plugins/init_search';
+import '../components/transaction_form';
 import "../plugins/flatpickr";
-import { formToggle } from "../components/transaction_form";
-
 const tasksShow = document.querySelector(".tasks.show")
 
 if(tasksShow) {
@@ -23,9 +24,4 @@ if(categoriesIndex) {
   byeWeather();
 }
 
-const balanceContainer = document.querySelector(".balance-container")
-
-if (balanceContainer) {
-  formToggle();
-}
-
+reveal();
