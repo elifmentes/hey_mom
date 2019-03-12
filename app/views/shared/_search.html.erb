@@ -1,15 +1,14 @@
-<div class="search-bar">
-  <%= form_tag tasks_path, class: "form-inline", method: :get do %>
-    <div class="input-container">
-      <i id="glass" class="fas fa-search"></i>
+<div id="wrap">
+    <%= form_tag tasks_path, class: "form-inline", method: :get do %>
         <%= text_field_tag :query,
-          params[:query],
-          id: "form-search",
-          class: "form-control",
-          placeholder: "Search",
-          value: ''
+            params[:query],
+            id: "search",
+            autocomplete:"on",
+            placeholder: "Search",
+            value: ''
         %>
-    </div>
-  <% end %>
+        <div id="search_submit">
+        </div>
+    <% end %>
 </div>
 
