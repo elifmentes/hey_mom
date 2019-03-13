@@ -11,7 +11,9 @@ const initTaskSteps = () => {
   const timeButton = document.getElementById('time-button');
 
   const content = document.getElementById('step-content');
+  const image = document.getElementById('step-image');
   const videoContent = document.getElementById('video-content');
+  const key = document.getElementById('key');
   const googleContent = document.getElementById('google');
   const mom = document.getElementById('mom-final');
 
@@ -41,29 +43,50 @@ const initTaskSteps = () => {
   }
 
   const scroll = () => {
-    window.scrollTo(0,document.body.scrollHeight);
-  }
+    window.scrollTo(0, document.body.scrollHeight);
+  };
+
+  const showImage = () => {
+    showElement(image);
+    image.innerHTML = `<img src="${steps[counter].image}" alt="">`;
+  };
 
   const showContent = () => {
+    if(steps[counter].image !== "") {
+      showImage();
+    }
+
     showElement(content);
     content.innerHTML = steps[counter].content;
   };
 
+
   const readYoutube = () => {
-    showElement(videoContent);
-    const youtubeKey = videoContent.dataset.youtubeApiKey;
+    const youtubeKey = process.env.YOUTUBE_KEY;
 
     fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${youtubeKey}&q=${steps[counter].title}`)
       .then(response => response.json())
       .then((data) => {
-        const result = data.items[0].id["videoId"];
-        videoContent.setAttribute("src", `https://www.youtube.com/embed/${result}`);
-      });
+        console.log(data.items.length);
+        if (data.items.length > 0) {
+          showElement(videoContent);
+          videoContent.innerHTML = `
+            <iframe id="key" src="" frameborder="0" allowfullscreen></iframe>
+          `;
+          const result = data.items[0].id["videoId"];
+          videoContent.querySelector('iframe').setAttribute("src", `https://www.youtube.com/embed/${result}`);
+          scroll();
+        } else {
+          showGoogle();
+          noCounter += 1;
+        }
+    });
   };
 
   const showVideo = () => {
     showContent();
     readYoutube();
+    scroll();
   };
 
   const showGoogle = () => {
@@ -76,7 +99,7 @@ const initTaskSteps = () => {
   }
 
   const clearSections = () => {
-    [content, videoContent, googleContent, mom].forEach(element => {
+    [content, videoContent, googleContent, mom, image, goBack].forEach(element => {
       element.classList.add('hidden');
       element.innerHTML = '';
     });
@@ -88,10 +111,17 @@ const initTaskSteps = () => {
   noButton.addEventListener('click', (event) => {
     console.log(noCounter);
     // clearSections();
-    if (noCounter < 3) {
+    if (noCounter < 4) {
       if (noCounter === 0) {
-        showContent();
+        if (steps[counter].image !== "") {
+          showImage();
+        } else {
+          showContent();
+          noCounter += 1;
+        }
       } else if (noCounter === 1) {
+        showContent();
+      } else if (noCounter === 2) {
         showVideo();
       } else {
         showGoogle();

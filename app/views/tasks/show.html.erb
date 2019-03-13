@@ -24,9 +24,12 @@
     <div id="steps-container">
       <div id="steps" data-steps="<%= @steps.reverse.to_json %>">
         <p id="step-title" class="speech-bubble"><%= @steps.reverse.first.title %></p>
+        <div class="hidden" id="step-image">
+        </div>
         <p id="step-content"></p>
-        <iframe id="video-content" class="hidden" data-youtube-api-key="<%= ENV['YOUTUBE_KEY'] %>" src=""  frameborder="0" allowfullscreen></iframe>
-        <p><a id="google" class="hidden" href="">Maybe you want to google it dear.</a></p>
+        <div class="hidden" id="video-content"></div>
+
+        <p><a id="google" class="hidden speech-bubble" href="">Maybe you want to google it dear.</a></p>
         <div class="bottom">
           <p class="speech-bubble hidden" id="mom-final"></p>
         </div>

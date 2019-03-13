@@ -36,7 +36,8 @@ end
 
 def build_steps(step, task)
   content = step["html"] == "" ? step["summary"] : step["html"]
-  step = Step.create(title: step["summary"], content: content, task: task)
+  image = step["image"].nil? ? "" : step["image"]["url"]
+  step = Step.create(title: step["summary"], content: content, task: task, image: image)
 end
 
 def url_multi(category, url)
