@@ -1,9 +1,13 @@
- <div class="weather-box" data-weather-api-key="<%= ENV['WEATHER_API_KEY'] %>">
-  <% if ((@weather['main']['temp'] - 273.15).to_i) < 10 %>
-      <div id="temperature">Hey it's a bit chilly make sure you take your coat!☂️<%=  (@weather['main']['temp'] - 273.15).to_i%> °C</div>
-    <% elsif  ((@weather['main']['temp'] - 273.15).to_i) > 10 %>
-      <div id="temperature">Hey it's <%=  (@weather['main']['temp'] - 273.15).to_i%> °C! Wear sun screen 😎</div>
-    <% end %>
+<div class="weather-box" data-weather-api-key="<%= ENV['WEATHER_API_KEY'] %>">
+  <% if ((@weather['main']['temp'] - 273.15).to_i) < 5 %>
+    <div id="temperature">Oh my god it's<%=  (@weather['main']['temp'] - 273.15).to_i%>°C, make sure you stay warm 🔥 </div>
+  <% elsif  (((@weather['main']['temp'] - 273.15).to_i) > 5) && (((@weather['main']['temp'] - 273.15).to_i) < 10) %>
+    <div id="temperature">Hey it's a bit chilly <%=  (@weather['main']['temp'] - 273.15).to_i%>°C! Take your ☂️ (just in case)</div>
+  <% elsif  (((@weather['main']['temp'] - 273.15).to_i) > 10) && (((@weather['main']['temp'] - 273.15).to_i) < 15)%>
+    <div id="temperature">It's<%=  (@weather['main']['temp'] - 273.15).to_i%> °C! But careful with the ☀️</div>
+  <% elsif  ((@weather['main']['temp'] - 273.15).to_i) > 15 %>
+    <div id="temperature">Hey it's <%=  (@weather['main']['temp'] - 273.15).to_i%> °C! Wear sun screen 😎</div>
+  <% end %>
 </div>
 
 <h1 style="text-align:center">Categories</h1>
