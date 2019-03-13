@@ -10,16 +10,17 @@
   margin-top: 0px;
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
-  width: 360px;
   margin-left: 0px;
   position: fixed;
   right: 0px;
   top: 0px;
   height: 100%;
+  width: 100%;
 }
 
-.dropdown-toggle{
-  margin-left: 296px;
+.dropdown-toggle::before {
+  position: absolute;
+  right: 5px;
 }
 
 // changing dropdown menu symbol to white
@@ -41,14 +42,19 @@ i.fas.fa-bars.dropdown-toggle {
       font-size: 50px;
       color: white;
       font-weight: 800;
-      line-height: 103px;
       letter-spacing: -0.07em;
       text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.25);
       text-align: center;
-      padding: 10px 50px;
+      padding: 10px 0;
       border-bottom: 0.5px solid white;
+      display: block;
     }
   }
+}
+
+.open > .dropdown-menu {
+  display: block;
+  overflow-y: scroll;
 }
 
 // div of every link
