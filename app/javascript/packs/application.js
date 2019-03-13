@@ -1,6 +1,8 @@
 import "bootstrap";
 import "../plugins/flatpickr"
 
+import { alert } from '../plugins/init_alert';
+
 import { initPlaces } from '../plugins/init_places';
 import { initTaskSteps } from '../plugins/init_task_steps';
 
@@ -10,6 +12,8 @@ import { reveal } from '../plugins/init_search';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { initMapbox } from '../plugins/init_mapbox';
+
+
 // import '../components/transaction_form';
 // import "../plugins/flatpickr";
 
@@ -38,4 +42,5 @@ if(pagesMap) {
 }
 
 reveal();
+alert();
 
