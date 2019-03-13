@@ -5,6 +5,9 @@
       <%= image_tag "back-arrow.png" %>
     <% end %>
   </div>
+  <div class="title">
+    <h4><%= @task.title %></h4>
+  </div>
   <div class="count-down">
     <p>Wanna set a timer?</p>
     <div class="timing">
@@ -14,9 +17,10 @@
       <p id="timer"></p>
     </div>
   </div>
-  <div class="content">
-    <h4><%= @task.title %></h4>
+  <div class="previous">
     <i class="fas fa-chevron-left fa-xs hidden" id="back-button"></i>
+  </div>
+  <div class="content">
     <div id="steps-container">
       <div id="steps" data-steps="<%= @steps.reverse.to_json %>">
         <p id="step-title" class="speech-bubble"><%= @steps.reverse.first.title %></p>
@@ -30,7 +34,7 @@
     </div>
   </div>
 </div>
-<div class="buttons fixed-bottom">
+<div class="buttons">
   <button type="button" class="step-buttons" id="nope-button">Nope</button>
   <button type="button" class="step-buttons" id="yes-button">Sure</button>
 </div>
