@@ -63,12 +63,11 @@ const initTaskSteps = () => {
 
 
   const readYoutube = () => {
-    const youtubeKey = process.env.YOUTUBE_KEY;
+    const youtubeKey = videoContent.dataset.youtube;
 
     fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${youtubeKey}&q=${steps[counter].title}`)
       .then(response => response.json())
       .then((data) => {
-        console.log(data.items.length);
         if (data.items.length > 0) {
           showElement(videoContent);
           videoContent.innerHTML = `
@@ -146,8 +145,6 @@ const initTaskSteps = () => {
     momAnswer();
     noCounter = 0;
 
-    console.log("counter", counter);
-    console.log("size", size);
     if (counter < size) {
       counter += 1;
 
