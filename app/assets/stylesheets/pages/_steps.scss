@@ -102,7 +102,7 @@ cite {
 }
 
 .speech-bubble {
-  width: auto;
+  width: 100%;
   margin: 10px auto;
   border-radius: 15px;
   background: white;
@@ -131,6 +131,15 @@ cite {
   margin-left: -13px;
 }
 
+#step-image img {
+  height: auto;
+  width: 100%;
+}
+
+#video-content iframe {
+  width: 100%;
+}
+
 #step-title {
   font-size: 12px;
 }
@@ -142,6 +151,11 @@ cite {
   font-size: 12px;
   text-decoration: none;
 }
+
+// #video-content {
+//   width: 100%;
+//   height: auto;
+// }
 
 #mom-final {
   font-size: 12px;
