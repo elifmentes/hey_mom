@@ -10,9 +10,11 @@
            <%= link_to "Let's Start", categories_path %>
           </button>
         <% else %>
-          <button class="btn btn-light btn-home" style="color:white">
-           <%= link_to "Log In", new_user_session_path %>
-          </button>
+          <%= link_to new_user_session_path do %>
+            <button class="btn btn-light btn-home" style="color:white">
+              Log In
+            </button>
+          <% end %>
           <div class="sign-up">
           <p>Don't have an account yet? <%= link_to "Sign Up", new_user_registration_path %></p>
          </div>

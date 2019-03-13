@@ -8,6 +8,7 @@ import { byeWeather } from '../plugins/init_weather';
 import { reveal } from '../plugins/init_search';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
+
 import { initMapbox } from '../plugins/init_mapbox';
 // import '../components/transaction_form';
 // import "../plugins/flatpickr";
@@ -37,3 +38,4 @@ if(pagesMap) {
 }
 
 reveal();
+
