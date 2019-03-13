@@ -1,40 +1,42 @@
 <div class="cards-container">
-  <div class="row">
+  <div class="row justify-content-center">
     <% @categories.each do |category| %>
-    <div class="card col-xs-6">
       <%= link_to category_path(category) do %>
-      <% if category.name == "Wallet" %>
-        <%= category.name %>
-        <p>
-          <i class="fas fa-hand-holding-usd"></i>
-        </p>
-      <% elsif category.name == "Food" %>
-        <%= category.name %>
-        <p>
-          <i class="fas fa-utensils"></i>
-        </p>
-      <% elsif category.name == "Health" %>
-        <%= category.name %>
-        <p>
-          <i class="fas fa-medkit"></i>
-        </p>
-      <% elsif category.name == "Housekeeping" %>
-        <%= category.name %>
-          <p>
-            <i class="fas fa-broom"></i>
-          </p>
-      <% elsif category.name == "Productivity" %>
-        <%= category.name %>
-        <p>
-          <i class="fas fa-laptop"></i>
-        </p>
-      <% else %>
-        <%= category.name %>
-        <p>
-          <i class="fas fa-heart"></i>
-        </p>
-      <% end %>
-    </div>
+        <div class="col-xs-6">
+        <div class="card">
+            <% if category.name == "Wallet" %>
+            <%= category.name %>
+            <p>
+              <i class="fas fa-hand-holding-usd"></i>
+            </p>
+            <% elsif category.name == "Food" %>
+              <%= category.name %>
+              <p>
+                <i class="fas fa-utensils"></i>
+              </p>
+            <% elsif category.name == "Health" %>
+              <%= category.name %>
+              <p>
+                <i class="fas fa-medkit"></i>
+              </p>
+            <% elsif category.name == "Housekeeping" %>
+              <%= category.name %>
+                <p>
+                  <i class="fas fa-broom"></i>
+                </p>
+            <% elsif category.name == "Productivity" %>
+              <%= category.name %>
+              <p>
+                <i class="fas fa-laptop"></i>
+              </p>
+            <% else %>
+              <%= category.name %>
+              <p>
+                <i class="fas fa-heart"></i>
+              </p>
+            <% end %>
+          </div>
+        </div>
       <% end %>
     <% end %>
   </div>
