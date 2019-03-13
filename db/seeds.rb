@@ -1,7 +1,7 @@
 require "open-uri"
-require "JSON"
+# require "JSON"
 
-UserTask.destroy_all
+Transaction.destroy_all
 User.destroy_all
 Step.destroy_all
 Task.destroy_all
@@ -218,7 +218,6 @@ housekeeping_articles.each { |article| url_single(housekeeping, "#{base_url}#{ar
 productivity_articles.each { |article| url_single(productivity, "#{base_url}#{article}") }
 relationship_articles.each { |article| url_single(relationship, "#{base_url}#{article}") }
 
-Transaction.destroy_all
 t = Transaction.create(user: admin, category: "Food", description: "Lunching with birds", amount: 55)
 t = Transaction.create(user: admin, description: "Work in pub", amount: 15, expense: false)
 t = Transaction.create(user: admin, category: "Food", description: "Lunching with dogs", amount: 65)
