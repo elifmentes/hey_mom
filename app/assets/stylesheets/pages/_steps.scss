@@ -98,7 +98,9 @@ cite {
   position: absolute;
   top: 190px;
   width: 85%;
-  margin-bottom: 70px;
+  // margin-bottom: 70px;
+  overflow-y: scroll;
+  padding-bottom: 70px;
 }
 
 .speech-bubble {
