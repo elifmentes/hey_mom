@@ -1,8 +1,6 @@
-/* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
   padding: 0 20px;
-  height: 80px;
 }
 /* Dropdown menu */
 .navbar-wagon-dropdown-menu {
@@ -59,7 +57,8 @@ i.fas.fa-bars.dropdown-toggle {
 
 // div of every link
 .link-icon {
-  height: 60px;
+  height: 45px;
+  margin-bottom: 8px;
   display: flex;
   a {
     text-decoration: none;
