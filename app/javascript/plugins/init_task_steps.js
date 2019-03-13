@@ -16,6 +16,7 @@ const initTaskSteps = () => {
   const key = document.getElementById('key');
   const googleContent = document.getElementById('google');
   const mom = document.getElementById('mom-final');
+  const home = document.getElementById('home-button');
 
   let counter = 0;
   let noCounter = 0;
@@ -98,8 +99,12 @@ const initTaskSteps = () => {
     googleContent.innerHTML = "Maybe you want to google it dear."
   }
 
+  const clearHome = () => {
+    home.classList.add('hidden');
+  }
+
   const clearSections = () => {
-    [content, videoContent, googleContent, mom, image, goBack].forEach(element => {
+    [content, videoContent, googleContent, mom, image].forEach(element => {
       element.classList.add('hidden');
       element.innerHTML = '';
     });
@@ -141,6 +146,8 @@ const initTaskSteps = () => {
     momAnswer();
     noCounter = 0;
 
+    console.log("counter", counter);
+    console.log("size", size);
     if (counter < size) {
       counter += 1;
 
@@ -149,6 +156,11 @@ const initTaskSteps = () => {
 
       step.innerHTML = '';
       step.innerHTML = steps[counter].title;
+    } else if (counter === size) {
+      counter += 1;
+      showElement(home);
+    } else {
+      window.location = "/categories";
     }
 
     if (counter >= 1) {
@@ -157,6 +169,7 @@ const initTaskSteps = () => {
   });
 
   back.addEventListener("click", (event) => {
+    clearHome();
     clearSections();
     showElement(mom);
     momAnswer();
