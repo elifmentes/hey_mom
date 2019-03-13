@@ -34,9 +34,6 @@ const initTaskSteps = () => {
   "Honey, do you even have friends? Anyway, did you get what i'm saying???",
   "😎🥰😘🤪🤱🏻💃🏼🐹🐬🌺🦚🧸"];
 
-  const momAnswer = () => {
-    mom.innerHTML = momAnswers[Math.floor(Math.random() * momAnswers.length)];
-  };
 
   const showElement = element => {
     element.classList.remove('hidden');
@@ -45,6 +42,11 @@ const initTaskSteps = () => {
 
   const scroll = () => {
     window.scrollTo(0, document.body.scrollHeight);
+  };
+
+  const momAnswer = () => {
+    mom.innerHTML = momAnswers[Math.floor(Math.random() * momAnswers.length)];
+    scroll();
   };
 
   const showImage = () => {
@@ -59,6 +61,7 @@ const initTaskSteps = () => {
 
     showElement(content);
     content.innerHTML = steps[counter].content;
+    scroll();
   };
 
 
@@ -79,6 +82,7 @@ const initTaskSteps = () => {
         } else {
           showGoogle();
           noCounter += 1;
+          scroll();
         }
     });
   };
@@ -95,7 +99,8 @@ const initTaskSteps = () => {
     showElement(googleContent);
     googleContent.setAttribute("target", "_blank")
     googleContent.setAttribute("href", "http://www.google.com");
-    googleContent.innerHTML = "Maybe you want to google it dear."
+    googleContent.innerHTML = "Maybe you want to google it dear.";
+    scroll();
   }
 
   const clearHome = () => {
@@ -130,6 +135,7 @@ const initTaskSteps = () => {
       } else {
         showGoogle();
       }
+      momAnswer();
       scroll();
       noCounter += 1;
     }
