@@ -1,8 +1,7 @@
-# require "open-uri"
+require "open-uri"
 # require "JSON"
 
 Transaction.destroy_all
-UserTask.destroy_all
 User.destroy_all
 Step.destroy_all
 Task.destroy_all
