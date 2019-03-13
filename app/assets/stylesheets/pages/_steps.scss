@@ -26,6 +26,8 @@ html,body{
 #back-button {
   color: white;
   font-size: 25px;
+  position: absolute;
+  top: 135px;
 }
 
 .step-buttons {
@@ -44,13 +46,21 @@ cite {
   display: none;
 }
 
+.title {
+  position: absolute;
+  top: 65px;
+  width: 85%;
+  margin-top: 0px;
+}
+
 .title h4 {
-  margin-top: 50px;
+  padding-top: auto;
+  padding-bottom: auto;
 }
 
 .count-down {
   position: absolute;
-  top: 128px;
+  top: 135px;
   left: 75px;
   margin-bottom: 15px;
 }
@@ -70,6 +80,9 @@ cite {
   width: 30px;
   margin-right: 5px;
   text-align: center;
+  &:focus {
+    outline: none;
+  }
 }
 
 #time-button {
@@ -83,7 +96,9 @@ cite {
 }
 .content {
   position: absolute;
-  top: 185px;
+  top: 190px;
+  width: 85%;
+  margin-bottom: 70px;
 }
 
 .speech-bubble {
@@ -126,6 +141,10 @@ cite {
 #google {
   font-size: 12px;
   text-decoration: none;
+}
+
+#mom-final {
+  font-size: 12px;
 }
 
 // .bottom p {
