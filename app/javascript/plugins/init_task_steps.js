@@ -47,8 +47,6 @@ const initTaskSteps = () => {
   const showContent = () => {
     showElement(content);
     content.innerHTML = steps[counter].content;
-    showElement(mom);
-    momAnswer();
   };
 
   const readYoutube = () => {
@@ -84,6 +82,9 @@ const initTaskSteps = () => {
     });
   }
 
+  showElement(mom);
+  momAnswer();
+
   noButton.addEventListener('click', (event) => {
     console.log(noCounter);
     // clearSections();
@@ -106,6 +107,8 @@ const initTaskSteps = () => {
 
   yesButton.addEventListener("click", (event) => {
     clearSections();
+    showElement(mom);
+    momAnswer();
     noCounter = 0;
 
     if (counter < size) {
@@ -125,6 +128,8 @@ const initTaskSteps = () => {
 
   back.addEventListener("click", (event) => {
     clearSections();
+    showElement(mom);
+    momAnswer();
     noCounter = 0;
 
     counter -= 1;

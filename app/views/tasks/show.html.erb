@@ -1,5 +1,5 @@
 
-<div class="container-fluid" style='overflow:scroll;margin-bottom:10vh;'>
+<div class="container-fluid" style="overflow:scroll;margin-bottom:10vh;">
   <div class="top">
     <%= link_to category_path(@category) do %>
       <%= image_tag "back-arrow.png" %>
@@ -27,9 +27,9 @@
         <p id="step-content"></p>
         <iframe id="video-content" class="hidden" data-youtube-api-key="<%= ENV['YOUTUBE_KEY'] %>" src=""  frameborder="0" allowfullscreen></iframe>
         <p><a id="google" class="hidden" href="">Maybe you want to google it dear.</a></p>
-      </div>
-      <div class="bottom">
-        <p class="speech-bubble hidden" id="mom-final"></p>
+        <div class="bottom">
+          <p class="speech-bubble hidden" id="mom-final"></p>
+        </div>
       </div>
     </div>
   </div>
