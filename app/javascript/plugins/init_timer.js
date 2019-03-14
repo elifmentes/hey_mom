@@ -13,6 +13,15 @@ const initTimer = () => {
       sec = 0;
     }
 
+    const minInput = document.getElementById('minute');
+    const secInput = document.getElementById('second');
+    const timeResult = document.getElementById('timer');
+    const resetTimer = () => {
+      minInput.value = '';
+      secInput.value = '';
+      timeResult.innerHTML = '00:00'
+    };
+
 
     const end = new Date(new Date().getTime() + (min * 60 + sec) * 1000);
 
@@ -27,6 +36,7 @@ const initTimer = () => {
         text: "Time is up!",
         icon: "success",
       });
+      resetTimer();
     });
 };
 
