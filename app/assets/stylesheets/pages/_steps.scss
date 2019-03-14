@@ -2,6 +2,87 @@ html,body{
   height:100%;
 }
 
+
+%remain-steps{
+  &:before {
+    content: '';
+    font-weight: 700;
+  }
+  &:after{
+    background-color: white;
+  }
+}
+.multi-steps{
+  display: table;
+  padding: 0px;
+  margin: 0px;
+  table-layout: fixed;
+  width: 100%;
+  > li{
+    // counter-increment: stepNum;
+    text-align: center;
+    display: table-cell;
+    position: relative;
+    color: white;
+
+    &:before{
+      display: block;
+      margin: 0 auto 4px;
+      background-color: white;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      font-weight: bold;
+      border:{
+        width: 2px;
+        style: solid;
+        // color: #FF5050;
+        radius: 50%;
+      }
+    }
+    &:after{
+      content: '';
+      height: 2px;
+      width: 100%;
+      background-color: white;
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      z-index: -1;
+    }
+    &:last-child{
+      &:after{
+        display: none;
+      }
+    }
+
+    &.is-active{
+      @extend %remain-steps;
+      &:before{
+        background-color: white;
+        // border-color: #FF5050;
+      }
+
+      ~ li{
+        // color: lightgrey;
+        // @extend %remain-steps;
+        &:before{
+          background-color: white;
+          border-color: white;
+        }
+      }
+    }
+  }
+}
+
+.time-section {
+  display: flex;
+  .previous {
+      padding: 5px 20px 0 0;
+  }
+}
+
 .buttons {
   position: fixed;
   height: 70px;
@@ -26,8 +107,6 @@ html,body{
 #back-button {
   color: white;
   font-size: 25px;
-  position: absolute;
-  top: 135px;
 }
 
 .step-buttons {
@@ -47,8 +126,6 @@ cite {
 }
 
 .title {
-  position: absolute;
-  top: 65px;
   width: 85%;
   margin-top: 0px;
 }
@@ -59,9 +136,9 @@ cite {
 }
 
 .count-down {
-  position: absolute;
-  top: 135px;
-  left: 75px;
+  // position: absolute;
+  // top: 135px;
+  // left: 75px;
 }
 
 .count-down p {
@@ -98,8 +175,6 @@ cite {
   margin-left: 5px;
 }
 .content {
-  position: absolute;
-  top: 190px;
   width: 85%;
   margin-top: 10px;
   padding-bottom: 70px;
@@ -113,12 +188,10 @@ cite {
   background: white;
   color: #332F2C;
   padding-left: 14px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-right: 10px;
-  position: relative;
   padding-top: 5px;
   padding-bottom: 5px;
+  padding-right: 10px;
+  position: relative;
 }
 
 .speech-bubble:after {
