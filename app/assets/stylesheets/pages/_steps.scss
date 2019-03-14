@@ -24,6 +24,8 @@ html,body{
     display: table-cell;
     position: relative;
     color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(25, 25, 25,0.3);
 
     &:before{
       display: block;
@@ -37,7 +39,6 @@ html,body{
       border:{
         width: 2px;
         style: solid;
-        // color: #FF5050;
         radius: 50%;
       }
     }
@@ -49,6 +50,7 @@ html,body{
       position: absolute;
       top: 16px;
       left: 50%;
+      box-shadow: 1px 1px 1px rgba(25, 25, 25,0.3);
       z-index: -1;
     }
     &:last-child{
@@ -62,14 +64,17 @@ html,body{
       &:before{
         background-color: white;
         // border-color: #FF5050;
+        box-shadow: 1px 1px 1px rgba(25, 25, 25,0.3);
       }
 
       ~ li{
         // color: lightgrey;
+        text-shadow: 1px 1px 1px rgba(25, 25, 25,0.3);
         // @extend %remain-steps;
         &:before{
           background-color: white;
           border-color: white;
+          box-shadow: 1px 1px 1px rgba(25, 25, 25,0.3);
         }
       }
     }
@@ -111,8 +116,11 @@ html,body{
 
 .step-buttons {
   height: 50px;
+  text-shadow: 1px 1px 1px rgba(25, 25, 25,0.3);
+  box-shadow: 1px 1px 1px rgba(25, 25, 25,0.3);
+  font-weight: bold;
   width: 150px;
-  border: 1px solid white;
+  border: 1.5px solid white;
   border-radius: 10px;
   background: transparent;
 
@@ -133,6 +141,7 @@ cite {
 .title h4 {
   padding-top: auto;
   padding-bottom: auto;
+  text-shadow: 1px 1px 1px rgba(25, 25, 25,0.3);
 }
 
 .count-down {
@@ -144,6 +153,7 @@ cite {
 .count-down p {
   margin-bottom: 0.5px;
   font-size: 15px;
+  text-shadow: 1px 1px 1px rgba(25, 25, 25,0.3);
 }
 
 .timing {
@@ -167,6 +177,7 @@ cite {
   color: white;
   font-size: 30px;
   margin-left: 10px;
+  text-shadow: 1px 1px 1px rgba(25, 25, 25,0.3);
 }
 
 #timer {
@@ -188,10 +199,11 @@ cite {
   background: white;
   color: #332F2C;
   padding-left: 14px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   padding-right: 10px;
   position: relative;
+  box-shadow: 1px 1px 1px rgba(25, 25, 25,0.3);
 }
 
 .speech-bubble:after {
@@ -235,5 +247,9 @@ cite {
 }
 
 #home-button {
+  font-size: 13px;
+}
+
+#mom-last {
   font-size: 13px;
 }
