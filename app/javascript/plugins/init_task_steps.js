@@ -16,6 +16,7 @@ const initTaskSteps = () => {
   const key = document.getElementById('key');
   const googleContent = document.getElementById('google');
   const mom = document.getElementById('mom-final');
+  const momLast = document.getElementById('mom-last');
   const home = document.getElementById('home-button');
 
   let counter = 0;
@@ -23,22 +24,25 @@ const initTaskSteps = () => {
   const size = steps.length - 1;
 
   const momAnswers = ["Did you understand sweety? 😘",
-  "🥰 Love is it clear enough for you?",
+  "🥰 Love, is it clear enough for you?",
   "Are you sure that you gonna be able to manage this darling? 🤔",
-  "Are you eating enough fruits and vegetables? 🥦🥝🥬🥒🍏🥗",
-  "Did you text me earlier?",
-  "How can you be sure?",
-  "Are you reading this?",
+  "Sweety, do you get this? ♥️",
+  "Did you get this darling?",
+  "Are you getting this my baby?"];
+
+  const momFinalAnswers = [
+  "And by the way, are you eating enough fruits and vegetables? 🥦🥝🥬🥒🍏🥗",
+  "Did you text me earlier by the way?",
   "And by the way please stop changing the google logo so much! I like the original one.",
-  "Could i text 911?",
-  "Honey, do you even have friends? Anyway, did you get what i'm saying???",
+  "And one more thing.. Can i text 911? Never mind I'll try it anyway...",
+  "Honey, do you even have friends? Call me, i am missing you.",
   "😎🥰😘🤪🤱🏻💃🏼🐹🐬🌺🦚🧸"];
 
 
   const showElement = element => {
     element.classList.remove('hidden');
     element.classList.add('speech-bubble');
-  }
+  };
 
   const scroll = () => {
     window.scrollTo(0, document.body.scrollHeight);
@@ -46,6 +50,11 @@ const initTaskSteps = () => {
 
   const momAnswer = () => {
     mom.innerHTML = momAnswers[Math.floor(Math.random() * momAnswers.length)];
+    scroll();
+  };
+
+  const momFinalAnswer = () => {
+    momLast.innerHTML = momFinalAnswers[Math.floor(Math.random() * momAnswers.length)];
     scroll();
   };
 
@@ -105,6 +114,10 @@ const initTaskSteps = () => {
 
   const clearHome = () => {
     home.classList.add('hidden');
+  }
+
+  const clearMomFinal = () => {
+    momLast.classList.add('hidden');
   }
 
   const clearSections = () => {
@@ -169,7 +182,6 @@ const initTaskSteps = () => {
     showElement(mom);
     momAnswer();
 
-
     noCounter = 0;
 
     if (counter < size) {
@@ -184,6 +196,8 @@ const initTaskSteps = () => {
     } else if (counter === size) {
       counter += 1;
       showElement(home);
+      showElement(momLast);
+      momFinalAnswer();
     } else {
       window.location = "/categories";
     }
@@ -197,6 +211,7 @@ const initTaskSteps = () => {
     clearHome();
     clearSections();
     showElement(mom);
+    clearMomFinal();
     momAnswer();
 
     noCounter = 0;
