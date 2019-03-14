@@ -62,12 +62,11 @@ cite {
   position: absolute;
   top: 135px;
   left: 75px;
-  margin-bottom: 15px;
 }
 
 .count-down p {
   margin-bottom: 0.5px;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .timing {
@@ -76,9 +75,11 @@ cite {
 }
 
 .time-input {
-  color: darkgrey;
-  width: 30px;
+  color: #332F2C;
+  width: 40px;
+  height: 40px;
   margin-right: 5px;
+  margin-bottom: 5px;
   text-align: center;
   &:focus {
     outline: none;
@@ -87,6 +88,8 @@ cite {
 
 #time-button {
   color: white;
+  font-size: 30px;
+  margin-left: 10px;
 }
 
 #timer {
@@ -98,17 +101,17 @@ cite {
   position: absolute;
   top: 190px;
   width: 85%;
+  margin-top: 10px;
   padding-bottom: 70px;
-  scroll-behavior: smooth;
   overflow-y: scroll;
 }
 
 .speech-bubble {
-  width: 100%;
+  width: 95%;
   margin: 10px auto;
   border-radius: 15px;
   background: white;
-  color: darkgrey;
+  color: #332F2C;
   padding-left: 14px;
   padding-top: 3px;
   padding-bottom: 3px;
@@ -121,7 +124,7 @@ cite {
 .speech-bubble:after {
   content: '';
   position: absolute;
-  left: 0;
+  left: 5px;
   top: 50%;
   width: 0;
   height: 0;
@@ -143,35 +146,21 @@ cite {
 }
 
 #step-title {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 #step-content {
-  font-size: 12px;
+  font-size: 13px;
 }
 #google {
-  font-size: 12px;
+  font-size: 13px;
   text-decoration: none;
 }
 
-// #video-content {
-//   width: 100%;
-//   height: auto;
-// }
-
 #mom-final {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 #home-button {
-  font-size: 12px;
+  font-size: 13px;
 }
-
-#home-button a {
-  text-decoration: none;
-  color: darkgrey;
-}
-
-// .bottom p {
-//   font-size: 15px;
-// }
