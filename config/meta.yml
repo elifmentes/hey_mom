@@ -1,0 +1,5 @@
+meta_product_name: "Hey Mom"
+meta_title: "Hey Mom - When in doubt, ask mom!"
+meta_description: "An app that would have all the basic tools for someone who is just starting their lives as an adult"
+meta_image: "Heymom.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
