@@ -13,7 +13,7 @@
   right: 0px;
   top: 0px;
   height: 100%;
-  width: 100%;
+  width: 85%;
 }
 
 .dropdown-toggle::before {
@@ -55,6 +55,9 @@ i.fas.fa-bars.dropdown-toggle {
   display: block;
   overflow-y: scroll;
 }
+.open > .dropdown-backdrop {
+  background-color: gray;
+  opacity: 0.5;}
 
 // div of every link
 .link-icon {
