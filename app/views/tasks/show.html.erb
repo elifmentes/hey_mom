@@ -5,35 +5,51 @@
       <%= image_tag "back-arrow.png" %>
     <% end %>
   </div>
-  <div class="title">
-    <h4><%= @task.title %></h4>
-  </div>
-  <div class="count-down">
-    <p>Wanna set a timer?</p>
-    <div class="timing">
-      <input type="text" class="time-input" id="minute" value="" default="">
-      <input type="text" class="time-input" id="second" value="" default="">
-      <i class="far fa-clock" id="time-button"></i>
-      <p id="timer"></p>
-    </div>
-  </div>
-  <div class="previous">
-    <i class="fas fa-chevron-left fa-xs hidden" id="back-button"></i>
-  </div>
-  <div class="content">
-    <div id="steps-container">
-      <div id="steps" data-steps="<%= @steps.reverse.to_json %>">
-        <p id="step-title" class="speech-bubble"><%= @steps.reverse.first.title %></p>
-        <div class="hidden" id="step-image">
-        </div>
-        <p id="step-content"></p>
-        <div class="hidden" id="video-content" data-youtube="<%= ENV['YOUTUBE_KEY'] %>"></div>
 
-        <p><a id="google" class="hidden" href="">Maybe you want to google it dear.</a></p>
-        <div class="bottom">
-          <p class="speech-bubble hidden" id="mom-final"></p>
+  <div class="progress-steps">
+    <ul class="multi-steps">
+      <% @steps.each_with_index do |step, index| %>
+        <% if index == 0 %>
+          <li class="is-active"><%= index + 1 %></li>
+        <% else %>
+          <li>&#32;</li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="after-progress">
+    <div class="title">
+      <h4><%= @task.title %></h4>
+    </div>
+    <div class="time-section">
+      <div class="previous">
+        <i class="fas fa-chevron-left fa-xs hidden" id="back-button"></i>
+      </div>
+      <div class="count-down">
+        <p>Wanna set a timer?</p>
+        <div class="timing">
+          <input type="text" class="time-input" id="minute" value="" default="">
+          <input type="text" class="time-input" id="second" value="" default="">
+          <i class="far fa-clock" id="time-button"></i>
+          <p id="timer"></p>
         </div>
-        <p class="hidden" id="home-button">Well done kiddo! I'm proud of you 🤩! Wanna exit this task?</p>
+      </div>
+    </div>
+    <div class="content">
+      <div id="steps-container">
+        <div id="steps" data-steps="<%= @steps.reverse.to_json %>">
+          <p id="step-title" class="speech-bubble"><%= @steps.reverse.first.title %></p>
+          <div class="hidden" id="step-image">
+          </div>
+          <p id="step-content"></p>
+          <div class="hidden" id="video-content" data-youtube="<%= ENV['YOUTUBE_KEY'] %>"></div>
+
+          <p><a id="google" class="hidden" href="">Maybe you want to google it dear.</a></p>
+          <div class="bottom">
+            <p class="speech-bubble hidden" id="mom-final"></p>
+          </div>
+          <p class="hidden" id="home-button">Well done kiddo! I'm proud of you 🤩! Wanna exit this task?</p>
+        </div>
       </div>
     </div>
   </div>

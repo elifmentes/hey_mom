@@ -141,6 +141,25 @@ const initTaskSteps = () => {
     }
   });
 
+
+  const pickNext = () => {
+    const active = document.getElementsByClassName('is-active')[0];
+    const next = active.nextElementSibling;
+    active.classList.remove('is-active');
+    active.innerHTML = '';
+    next.classList.add('is-active');
+    next.innerHTML = counter + 1;
+  }
+
+  const pickPrevious = () => {
+    const active = document.getElementsByClassName('is-active')[0];
+    const previous = active.previousElementSibling;
+    active.classList.remove('is-active');
+    active.innerHTML = '';
+    previous.classList.add('is-active');
+    previous.innerHTML = counter + 1;
+  }
+
   timeButton.addEventListener('click', (event) => {
     initTimer();
   });
@@ -149,6 +168,8 @@ const initTaskSteps = () => {
     clearSections();
     showElement(mom);
     momAnswer();
+
+
     noCounter = 0;
 
     if (counter < size) {
@@ -159,6 +180,7 @@ const initTaskSteps = () => {
 
       step.innerHTML = '';
       step.innerHTML = steps[counter].title;
+      pickNext();
     } else if (counter === size) {
       counter += 1;
       showElement(home);
@@ -176,6 +198,7 @@ const initTaskSteps = () => {
     clearSections();
     showElement(mom);
     momAnswer();
+
     noCounter = 0;
 
     counter -= 1;
@@ -184,6 +207,8 @@ const initTaskSteps = () => {
 
     content.innerHTML = '';
     step.innerHTML = steps[counter].title;
+
+    pickPrevious();
 
     if (counter < 1) {
       back.classList.add('hidden');
