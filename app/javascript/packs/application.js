@@ -9,6 +9,7 @@ import { initTaskSteps } from '../plugins/init_task_steps';
 import { byeWeather } from '../plugins/init_weather';
 import { reveal } from '../plugins/init_search';
 
+import { animated } from '../plugins/init_animation';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { initMapbox } from '../plugins/init_mapbox';
@@ -43,4 +44,5 @@ if(pagesMap) {
 
 reveal();
 alert();
+animated();
 
